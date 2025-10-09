@@ -29,7 +29,7 @@ namespace_imports = [
 ]
 
 module = ExtractUtilsModule(
-    'luna',
+    'athena',
     'blackberry',
     namespace_imports=namespace_imports,
 )
