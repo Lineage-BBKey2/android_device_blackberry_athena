@@ -23,6 +23,9 @@ DEVICE_PATH := device/blackberry/athena
 TARGET_CPU_VARIANT_RUNTIME := cortex-a73
 TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a73
 
+# Audio
+AUDIO_FEATURE_ENABLED_EXT_AMPLIFIER := true
+
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := sdm660
 
