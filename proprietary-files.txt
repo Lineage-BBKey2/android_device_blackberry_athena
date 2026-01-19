@@ -1673,8 +1673,6 @@ vendor/lib/libmmcamera_ov5675_luna.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib/libmmcamera_ov5695.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib/libmmcamera_ov7251.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib/libmmcamera_ov8856.so;DISABLE_CHECKELF;DISABLE_DEPS
-vendor/lib/libmmcamera_ov8856_2lane.so;DISABLE_CHECKELF;DISABLE_DEPS
-vendor/lib/libmmcamera_ov8856_4lane.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib/libmmcamera_ov8858.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib/libmmcamera_ov8865.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib/libmmcamera_paaf_lib.so;DISABLE_CHECKELF;DISABLE_DEPS
@@ -1708,7 +1706,6 @@ vendor/lib/libmmcamera_s5k3p3sm.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib/libmmcamera_s5k3p8sp.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib/libmmcamera_s5k4h7_athena.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib/libmmcamera_s5k4h7_luna.so;DISABLE_CHECKELF;DISABLE_DEPS
-vendor/lib/libmmcamera_sat_test_lib.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib/libmmcamera_sony_imx214_eeprom.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib/libmmcamera_sony_imx298_eeprom.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib/libmmcamera_sony_imx378_eeprom.so;DISABLE_CHECKELF;DISABLE_DEPS
