@@ -29,6 +29,9 @@ TARGET_BOOTLOADER_BOARD_NAME := sdm660
 # Display
 TARGET_SCREEN_DENSITY := 429
 
+# Kernel
+TARGET_KERNEL_CONFIG := athena-perf_defconfig
+
 # Properties
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 
