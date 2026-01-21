@@ -26,7 +26,3 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk)
 
 # Get non-open-source specific aspects
 $(call inherit-product, vendor/blackberry/athena/athena-vendor.mk)
-
-# Add audio amp for TFA codec
-PRODUCT_PACKAGES += \
-    audio_amplifier.sdm660

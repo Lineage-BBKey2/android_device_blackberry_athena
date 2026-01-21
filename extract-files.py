@@ -28,10 +28,18 @@ namespace_imports = [
     'vendor/blackberry/sdm660-common',
 ]
 
+blob_fixups: blob_fixups_user_type = {
+    ('vendor/lib/hw/audio.primary.sdm660.so',
+     'vendor/lib64/hw/audio.primary.sdm660.so'
+     ): blob_fixup()
+        .add_needed('libprocessgroup.so'),
+}  # fmt: skip
+
 module = ExtractUtilsModule(
     'athena',
     'blackberry',
     namespace_imports=namespace_imports,
+    blob_fixups=blob_fixups,
 )
 
 if __name__ == '__main__':

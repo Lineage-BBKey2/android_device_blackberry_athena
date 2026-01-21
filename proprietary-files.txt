@@ -1,3 +1,10 @@
+## All proprietary files from this list, unless pinned and noted otherwise,
+## are from Athena (OPM1.171019.026).
+
+# Audio (codec firmware)
+vendor/firmware/tfa98xx.cnt
+
+# Audio (ACDBs)
 vendor/etc/acdbdata/MTP/sdm660-snd-card-bbf100/bb_Bluetooth_cal.acdb
 vendor/etc/acdbdata/MTP/sdm660-snd-card-bbf100/bb_General_cal.acdb
 vendor/etc/acdbdata/MTP/sdm660-snd-card-bbf100/bb_Global_cal.acdb
@@ -5,6 +12,16 @@ vendor/etc/acdbdata/MTP/sdm660-snd-card-bbf100/bb_Handset_cal.acdb
 vendor/etc/acdbdata/MTP/sdm660-snd-card-bbf100/bb_Hdmi_cal.acdb
 vendor/etc/acdbdata/MTP/sdm660-snd-card-bbf100/bb_Headset_cal.acdb
 vendor/etc/acdbdata/MTP/sdm660-snd-card-bbf100/bb_Speaker_cal.acdb
+
+# Audio (machine) - from Athena (PQ1A.190105.004)
+# So... it goes down to this. Athena has some weird routes in the HAL that need to be reverse-engineered
+# And because of free time constraints, let's just kang it.
+vendor/lib/libaudio_log_utils.so|24f58874a6f936c6cc5c479d441d5bdd618cc7ac
+vendor/lib64/libaudio_log_utils.so|e5e575de822f7e906b44eb237ee77d71c8638c0f
+vendor/lib/hw/audio.primary.sdm660.so|05ae46535dd404a813c3f341f9bd3ce7c950ef14|60d08e8afb7d4975999cb705ab51a14c001e531f
+vendor/lib64/hw/audio.primary.sdm660.so|4cb8c5fba8ef875fb8b9c388a043bfc84106c46e|57f1e390259c836e167df3aa31c1b974d897be37
+
+# camera
 vendor/etc/camera/camera_config.xml
 vendor/etc/camera/csidtg_camera.xml
 vendor/etc/camera/csidtg_chromatix.xml
@@ -1669,7 +1686,6 @@ vendor/lib/libmmcamera_ov4688_eeprom.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib/libmmcamera_ov5645.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib/libmmcamera_ov5670.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib/libmmcamera_ov5675_luna.so;DISABLE_CHECKELF;DISABLE_DEPS
-#vendor/lib/libmmcamera_ov5675_luna_eeprom.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib/libmmcamera_ov5695.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib/libmmcamera_ov7251.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib/libmmcamera_ov8856.so;DISABLE_CHECKELF;DISABLE_DEPS
@@ -1694,7 +1710,6 @@ vendor/lib/libmmcamera_s5k2l9_qtech_athena.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib/libmmcamera_s5k2l9_sunny_athena.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib/libmmcamera_s5k3l8.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib/libmmcamera_s5k3l8_luna.so;DISABLE_CHECKELF;DISABLE_DEPS
-#vendor/lib/libmmcamera_s5k3l8_luna_eeprom.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib/libmmcamera_s5k3l8_mono.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib/libmmcamera_s5k3m2xm.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib/libmmcamera_s5k3m2xx.so;DISABLE_CHECKELF;DISABLE_DEPS
@@ -1754,7 +1769,6 @@ vendor/lib64/libmmcamera_faceproc.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib64/libmmcamera_faceproc2.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib64/libmmcamera_tintless_algo.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib64/libmmcamera_tintless_bg_pca_algo.so;DISABLE_CHECKELF;DISABLE_DEPS
-#vendor/lib64/libmmosal_proprietary.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib64/libmmsw_detail_enhancement.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib64/libmmsw_math.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib64/libmmsw_opencl.so;DISABLE_CHECKELF;DISABLE_DEPS
