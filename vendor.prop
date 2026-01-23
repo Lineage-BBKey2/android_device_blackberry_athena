@@ -2,7 +2,7 @@
 debug.ftm.mixerpath=/vendor/etc/mixer_paths_bbe100.xml
 
 # Bluetooth
-bluetooth.device.default_name=BlackBerry Key2 LE
+bluetooth.device.default_name=BlackBerry Key2
 
 # Camera
 camera.ans.yproc.int.main=20,20,20,20
@@ -17,9 +17,9 @@ persist.camera.ffcolor.lev3=ffdcb9
 persist.vendor.camera.isp.turbo=1
 vendor.camera.hal1.packagelist=com.dw.btime
 
-# Fingerprint - TODO (Sunwave?)
-# ro.hardware.fingerprint=gxfp3258_drg
-# sys.fp.firmware.version=Goodix-0-V01.00.24.11
+# Fingerprint - Goodix
+# TODO: other devices have nice model names... can we do too?
+ro.hardware.fingerprint=goodix
 
 # Radio
 persist.radio.qcom_ext_enable=true

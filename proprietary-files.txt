@@ -84,12 +84,6 @@ vendor/etc/camera/s5k3p8sp_chromatix.xml
 vendor/etc/camera/s5k4h7_athena_chromatix.xml
 vendor/etc/camera/s5k4h7_luna_chromatix.xml
 vendor/etc/camera/s5k4h7_minerva_chromatix.xml
-vendor/etc/mixer_paths_bbf100.xml
-vendor/etc/sensors/sensor_def_qcomdev.conf
-vendor/firmware/a512_zap.b00
-vendor/firmware/a512_zap.b01
-vendor/firmware/a512_zap.b02
-vendor/firmware/a512_zap.mdt
 vendor/lib/libactuator_ad5816g.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib/libactuator_ad5823.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib/libactuator_ak7345.so;DISABLE_CHECKELF;DISABLE_DEPS
@@ -1773,3 +1767,31 @@ vendor/lib64/libmmsw_detail_enhancement.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib64/libmmsw_math.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib64/libmmsw_opencl.so;DISABLE_CHECKELF;DISABLE_DEPS
 vendor/lib64/libmmsw_platform.so;DISABLE_CHECKELF;DISABLE_DEPS
+
+# Firmware (Goodix)
+vendor/firmware/goodixfp.mdt
+vendor/firmware/goodixfp.b02
+vendor/firmware/goodixfp.b07
+vendor/firmware/goodixfp.b04
+vendor/firmware/goodixfp.b01
+vendor/firmware/goodixfp.b03
+vendor/firmware/goodixfp.b00
+vendor/firmware/goodixfp.b05
+vendor/firmware/goodixfp.b06
+
+# Fingerprint (Goodix)
+vendor/bin/gx_fpd
+vendor/etc/init/goodix.fingerprint.rc
+vendor/etc/init/android.hardware.biometrics.fingerprint@2.1-service-gf5216.rc
+vendor/lib64/hw/fingerprint.goodix.so;FIX_SONAME
+vendor/lib64/hw/gxfingerprint.default.so
+vendor/lib64/libvendor.goodix.hardware.fingerprint.hwbinder@2.1.so
+
+# GPU firmware
+vendor/firmware/a512_zap.b00
+vendor/firmware/a512_zap.b01
+vendor/firmware/a512_zap.b02
+vendor/firmware/a512_zap.mdt
+
+# Sensors
+vendor/etc/sensors/sensor_def_qcomdev.conf
