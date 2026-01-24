@@ -12,7 +12,8 @@ PRODUCT_MANUFACTURER := TCL Technology
 PRODUCT_MODEL := BlackBerry Key2
 PRODUCT_NAME := lineage_athena
 
+# frankenstein release x pie
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BuildDesc="Dragon_00WW 10 QKQ1.190828.002 00WW_4_150 release-keys" \
-    BuildFingerprint=Nokia/Dragon_00WW/DRG_sprout:10/QKQ1.190828.002/00WW_4_150:user/release-keys \
-    DeviceProduct=DRG_sprout
+    BuildDesc="Athena 9 PQ1A.190105.004 ACB156 release-keys" \
+    BuildFingerprint=blackberry/athena/athena:9/PQ1A.190105.004/ACB156:user/release-keys \
+    DeviceProduct=athena
