@@ -51,6 +51,23 @@ blob_fixups: blob_fixups_user_type =        {
         .remove_needed('libkeymaster_messages.so')
         .replace_needed('libstdc++.so', 'libstdc++_vendor.so')
         .add_needed('libbinder_shim.so'),
+
+    ('vendor/lib/libdualcameraddm.so',
+     'vendor/lib/libarcsoft_dualcam_refocus.so',
+     'vendor/lib/libarcsoft_low_light_shot.so',
+     'vendor/lib/liboptizoom.so',
+     'vendor/lib/libchromaflash.so'): blob_fixup()
+        .replace_needed('libstdc++.so', 'libstdc++_vendor.so'),
+
+    ('vendor/lib/libcamera_imgproc.so',
+     'vendor/lib/libopencv_java3.so'): blob_fixup()
+        .remove_needed('libjnigraphics.so')
+        .replace_needed('libstdc++.so', 'libstdc++_vendor.so'),
+
+    'vendor/lib/libVDSuperPhotoAPI.so': blob_fixup()
+        .remove_needed('libjnigraphics.so')
+        .remove_needed('libandroid.so')
+        .replace_needed('libstdc++.so', 'libstdc++_vendor.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
