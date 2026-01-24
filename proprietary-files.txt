@@ -1783,11 +1783,13 @@ vendor/firmware/goodixfp.b06
 vendor/bin/gx_fpd;DISABLE_DEPS
 vendor/etc/init/goodix.fingerprint.rc
 vendor/etc/init/android.hardware.biometrics.fingerprint@2.1-service-gf5216.rc
-vendor/lib64/libfp_client.so;DISABLE_DEPS
 vendor/lib64/libfpservice.so;DISABLE_DEPS
 vendor/lib64/hw/fingerprint.goodix.so;FIX_SONAME;DISABLE_DEPS
 vendor/lib64/hw/gxfingerprint.default.so;DISABLE_DEPS
 vendor/lib64/libvendor.goodix.hardware.fingerprint.hwbinder@2.1.so;DISABLE_DEPS
+
+# Fingerprint client - from NB1 - 00WW_5_16A
+vendor/lib64/libfp_client.so|fdc9d9311f1ec5f975ac174e2e6fcededa5d294d|cc39fec244fc20860e3898afb62992e91b66464a
 
 # GPU firmware
 vendor/firmware/a512_zap.b00

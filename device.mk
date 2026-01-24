@@ -16,10 +16,11 @@
 DEVICE_PATH := device/blackberry/athena
 
 # Set Shipping API level
-$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o.mk)
+PRODUCT_SHIPPING_API_LEVEL := 27
 
-# Inherit from BlackBerry sdm660-common
-$(call inherit-product, device/blackberry/sdm660-common/common.mk)
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay
 
 # Setup dalvik vm configs
 $(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk)
@@ -27,10 +28,30 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk)
 # Get non-open-source specific aspects
 $(call inherit-product, vendor/blackberry/athena/athena-vendor.mk)
 
+# AAPT
+PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+
+# Boot Animation
+TARGET_SCREEN_HEIGHT := 1620
+TARGET_SCREEN_WIDTH := 1080
+
 # Audio configs
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(DEVICE_PATH)/audio/,$(TARGET_COPY_OUT_VENDOR)/etc)
 
+# Keyboard
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(DEVICE_PATH)/keylayout/keychars,$(TARGET_COPY_OUT_VENDOR)/usr/keychars/) \
+    $(call find-copy-subdir-files,*,$(DEVICE_PATH)/keylayout/keylayout/,$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/) \
+    $(call find-copy-subdir-files,*,$(DEVICE_PATH)/keylayout/idc,$(TARGET_COPY_OUT_VENDOR)/usr/idc/)
+
+# GMS
+PRODUCT_GMS_CLIENTID_BASE := android-blackberry
+
 # Goodix - libbinder shim
 PRODUCT_PACKAGES += \
     libbinder_shim.vendor
+
+# Inherit from BlackBerry sdm660-common
+$(call inherit-product, device/blackberry/sdm660-common/common.mk)

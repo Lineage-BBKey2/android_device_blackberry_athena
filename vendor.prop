@@ -20,6 +20,7 @@ vendor.camera.hal1.packagelist=com.dw.btime
 # Fingerprint - Goodix
 # TODO: other devices have nice model names... can we do too?
 ro.hardware.fingerprint=goodix
+persist.vendor.fingerprint.type=home
 
 # Radio
 persist.radio.qcom_ext_enable=true
