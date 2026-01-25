@@ -29,19 +29,32 @@ namespace_imports = [
 ]
 
 blob_fixups: blob_fixups_user_type =        {
-    # Audio
+    # Protobuf for audio and goodix
     ('vendor/lib/libwebrtc_audio_preprocessing.so',
      'vendor/lib64/libwebrtc_audio_preprocessing.so'
      ): blob_fixup()
         .replace_needed('libprotobuf-cpp-lite.so', 'libprotobuf-cpp-lite-v29.so'),
+
+    'vendor/bin/gx_fpd': blob_fixup()
+        .replace_needed('libprotobuf-cpp-lite.so', 'libprotobuf-cpp-lite-v29.so')
+        .remove_needed('libandroid_runtime.so')
+        .remove_needed('libkeystore_binder.so')
+        .remove_needed('libbacktrace.so')
+        .remove_needed('libunwind.so')
+        .remove_needed('libkeystore_binder.so')
+        .remove_needed('libsoftkeymasterdevice.so')
+        .remove_needed('libsoftkeymaster.so')
+        .remove_needed('libkeymaster_messages.so')
+        .replace_needed('libstdc++.so', 'libstdc++_vendor.so')
+        .add_needed('libbinder_shim.so')
+        .add_needed('libfakelogprint.so'),
 
     # Fingerprint
     ('vendor/lib64/hw/fingerprint.goodix.so',
      'vendor/lib64/libfp_client.so',
      'vendor/lib64/libfpservice.so',
      'vendor/lib64/libvendor.goodix.hardware.fingerprint.hwbinder@2.1.so',
-     'vendor/lib64/hw/gxfingerprint.default.so',
-     'vendor/bin/gx_fpd'): blob_fixup()
+     'vendor/lib64/hw/gxfingerprint.default.so'): blob_fixup()
         .remove_needed('libandroid_runtime.so')
         .remove_needed('libkeystore_binder.so')
         .remove_needed('libbacktrace.so')
