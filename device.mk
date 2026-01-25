@@ -51,7 +51,8 @@ PRODUCT_GMS_CLIENTID_BASE := android-blackberry
 
 # Goodix - libbinder shim
 PRODUCT_PACKAGES += \
-    libbinder_shim.vendor
+    libbinder_shim.vendor \
+    libfakelogprint
 
 # Inherit from BlackBerry sdm660-common
 $(call inherit-product, device/blackberry/sdm660-common/common.mk)

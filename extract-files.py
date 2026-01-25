@@ -29,12 +29,13 @@ namespace_imports = [
 ]
 
 blob_fixups: blob_fixups_user_type =        {
-    ('vendor/lib/hw/audio.primary.sdm660.so',
-     'vendor/lib64/hw/audio.primary.sdm660.so'
+    # Audio
+    ('vendor/lib/libwebrtc_audio_preprocessing.so',
+     'vendor/lib64/libwebrtc_audio_preprocessing.so'
      ): blob_fixup()
-        .add_needed('libprocessgroup.so'),
+        .replace_needed('libprotobuf-cpp-lite.so', 'libprotobuf-cpp-lite-v29.so'),
 
-    # Wow. This is terrible. Thanks Goodix.
+    # Fingerprint
     ('vendor/lib64/hw/fingerprint.goodix.so',
      'vendor/lib64/libfp_client.so',
      'vendor/lib64/libfpservice.so',
@@ -50,8 +51,10 @@ blob_fixups: blob_fixups_user_type =        {
         .remove_needed('libsoftkeymaster.so')
         .remove_needed('libkeymaster_messages.so')
         .replace_needed('libstdc++.so', 'libstdc++_vendor.so')
-        .add_needed('libbinder_shim.so'),
+        .add_needed('libbinder_shim.so')
+        .add_needed('libfakelogprint.so'),
 
+    # Cams
     ('vendor/lib/libdualcameraddm.so',
      'vendor/lib/libarcsoft_dualcam_refocus.so',
      'vendor/lib/libarcsoft_low_light_shot.so',
