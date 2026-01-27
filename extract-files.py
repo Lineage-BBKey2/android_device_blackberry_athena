@@ -35,6 +35,11 @@ blob_fixups: blob_fixups_user_type =        {
      ): blob_fixup()
         .replace_needed('libprotobuf-cpp-lite.so', 'libprotobuf-cpp-lite-v29.so'),
 
+    ('vendor/lib/hw/audio.primary.sdm660.so',
+     'vendor/lib64/hw/audio.primary.sdm660.so'
+     ): blob_fixup()
+        .add_needed('libprocessgroup.so'),
+
     # Fingerprint
     ('vendor/lib64/hw/fingerprint.goodix.so',
      'vendor/lib64/libfp_client.so',

@@ -97,6 +97,14 @@ vendor/etc/acdbdata/adsp_avs_config.acdb
 # Audio (codec firmware)
 vendor/firmware/tfa98xx.cnt
 
+# Audio (machine) - from Athena (PQ1A.190105.004)
+# So... it goes down to this. Athena has some weird routes in the HAL that need to be reverse-engineered
+# And because of free time constraints, let's just kang it.
+vendor/lib/libaudio_log_utils.so|24f58874a6f936c6cc5c479d441d5bdd618cc7ac
+vendor/lib64/libaudio_log_utils.so|e5e575de822f7e906b44eb237ee77d71c8638c0f
+vendor/lib/hw/audio.primary.sdm660.so|05ae46535dd404a813c3f341f9bd3ce7c950ef14|60d08e8afb7d4975999cb705ab51a14c001e531f
+vendor/lib64/hw/audio.primary.sdm660.so|4cb8c5fba8ef875fb8b9c388a043bfc84106c46e|57f1e390259c836e167df3aa31c1b974d897be37
+
 # ADSP (Modules)
 vendor/lib/rfsa/adsp/capi_v2_aptX_Classic.so
 vendor/lib/rfsa/adsp/capi_v2_aptX_HD.so
