@@ -49,12 +49,25 @@ blob_fixups: blob_fixups_user_type =        {
         .add_needed('libbinder_shim.so')
         .add_needed('libfakelogprint.so'),
 
+    'vendor/lib64/hw/gxfingerprint.default.so': blob_fixup()
+        .replace_needed('libprotobuf-cpp-lite.so', 'libprotobuf-cpp-lite-v29.so')
+        .remove_needed('libandroid_runtime.so')
+        .remove_needed('libkeystore_binder.so')
+        .remove_needed('libbacktrace.so')
+        .remove_needed('libunwind.so')
+        .remove_needed('libkeystore_binder.so')
+        .remove_needed('libsoftkeymasterdevice.so')
+        .remove_needed('libsoftkeymaster.so')
+        .remove_needed('libkeymaster_messages.so')
+        .replace_needed('libstdc++.so', 'libstdc++_vendor.so')
+        .add_needed('libbinder_shim.so')
+        .binary_regex_replace(b'/system/etc/firmware', b'/vendor/firmware\x00\x00\x00\x00'),
+
     # Fingerprint
     ('vendor/lib64/hw/fingerprint.goodix.so',
      'vendor/lib64/libfp_client.so',
      'vendor/lib64/libfpservice.so',
-     'vendor/lib64/libvendor.goodix.hardware.fingerprint.hwbinder@2.1.so',
-     'vendor/lib64/hw/gxfingerprint.default.so'): blob_fixup()
+     'vendor/lib64/libvendor.goodix.hardware.fingerprint.hwbinder@2.1.so'): blob_fixup()
         .remove_needed('libandroid_runtime.so')
         .remove_needed('libkeystore_binder.so')
         .remove_needed('libbacktrace.so')
