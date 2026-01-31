@@ -36,15 +36,9 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 TARGET_SCREEN_HEIGHT := 1620
 TARGET_SCREEN_WIDTH := 1080
 
-# Audio configs
+# Athena audio configs
 PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,$(DEVICE_PATH)/audio/,$(TARGET_COPY_OUT_VENDOR)/etc)
-
-# Keyboard
-PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,$(DEVICE_PATH)/keylayout/keychars,$(TARGET_COPY_OUT_VENDOR)/usr/keychars/) \
-    $(call find-copy-subdir-files,*,$(DEVICE_PATH)/keylayout/keylayout/,$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/) \
-    $(call find-copy-subdir-files,*,$(DEVICE_PATH)/keylayout/idc,$(TARGET_COPY_OUT_VENDOR)/usr/idc/)
+    $(call find-copy-subdir-files,*,$(DEVICE_PATH)/configs/audio/,$(TARGET_COPY_OUT_VENDOR)/etc)
 
 # GMS
 PRODUCT_GMS_CLIENTID_BASE := android-blackberry
