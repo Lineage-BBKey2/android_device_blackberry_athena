@@ -3,7 +3,6 @@
 
 # ADSP - from Cat S62Pro sdm660_64-user 11 RKQ1.210406.002 1.015.00
 vendor/bin/adsprpcd|5e246a6f5d2dca27e29b233a17e4673532191b95
-vendor/etc/init/vendor.qti.adsprpc-service.rc|54588df8e7da58c66838028d2284986b966c2d37
 vendor/lib/libadsprpc.so|3da7471cbfb2f26bb997d21098282697ee1965e4
 vendor/lib/libadsp_default_listener.so|c822c536d9776ca2d60bf5a158531544f20c4829
 vendor/lib/libadsp_hvx_callback_skel.so|349803cd69d676e386b2a923c128c49aeefdeb4a
