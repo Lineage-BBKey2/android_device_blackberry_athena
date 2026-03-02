@@ -53,5 +53,9 @@ PRODUCT_PACKAGES += \
     libskia_shim \
     libjnigraphics_shim
 
+# Touch Keypad
+PRODUCT_PACKAGES += \
+    vendor.blackberry.touchkeypad-service
+
 # Inherit from BlackBerry sdm660-common
 $(call inherit-product, device/blackberry/sdm660-common/common.mk)
