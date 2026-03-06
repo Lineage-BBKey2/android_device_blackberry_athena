@@ -27,6 +27,8 @@ video.disable.ubwc=1
 persist.camera.preview.ubwc=0
 vendor.camera.hal1.packagelist=com.dw.btime
 persist.camera.expose.aux=1
+# Disable QCameraMuxer logical dual-camera (camera ID 3) - incompatible with Android 15
+persist.camera.dual.camera=0
 # Dual LED flash balance: l0,l1,h0,h1 (torch_current_0, torch_current_1, flash_current_0, flash_current_1)
 persist.camera.dual_led_current=200,200,750,750
 

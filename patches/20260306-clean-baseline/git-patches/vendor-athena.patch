@@ -1,0 +1,9 @@
+diff --git a/proprietary/vendor/lib/libmmcamera2_q3a_core.so b/proprietary/vendor/lib/libmmcamera2_q3a_core.so
+index e4d785a..17eca9f 100644
+Binary files a/proprietary/vendor/lib/libmmcamera2_q3a_core.so and b/proprietary/vendor/lib/libmmcamera2_q3a_core.so differ
+diff --git a/proprietary/vendor/lib/libmmcamera2_stats_lib.so b/proprietary/vendor/lib/libmmcamera2_stats_lib.so
+index 0f3927f..cac4d51 100644
+Binary files a/proprietary/vendor/lib/libmmcamera2_stats_lib.so and b/proprietary/vendor/lib/libmmcamera2_stats_lib.so differ
+diff --git a/proprietary/vendor/lib/libmmcamera_interface.so b/proprietary/vendor/lib/libmmcamera_interface.so
+index dc6ef86..fbc077e 100644
+Binary files a/proprietary/vendor/lib/libmmcamera_interface.so and b/proprietary/vendor/lib/libmmcamera_interface.so differ
