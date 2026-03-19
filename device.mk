@@ -53,9 +53,5 @@ PRODUCT_PACKAGES += \
     libbinder_shim.vendor \
     libfakelogprint
 
-# Touch Keypad
-PRODUCT_PACKAGES += \
-    vendor.blackberry.touchkeypad-service
-
 # Inherit from BlackBerry sdm660-common
 $(call inherit-product, device/blackberry/sdm660-common/common.mk)
