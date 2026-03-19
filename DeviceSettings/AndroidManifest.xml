@@ -3,6 +3,7 @@
     package="com.blackberry.settings">
 
     <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
     <application
         android:label="@string/device_settings_title"

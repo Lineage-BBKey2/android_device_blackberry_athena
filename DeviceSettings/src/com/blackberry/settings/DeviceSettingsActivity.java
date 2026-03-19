@@ -13,6 +13,8 @@ import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.SeekBarPreference;
+import androidx.preference.SwitchPreference;
 
 public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
 
@@ -32,11 +34,16 @@ public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
             implements Preference.OnPreferenceChangeListener {
 
         private static final String KEY_IME_SWITCHER = "ime_switcher_shortcut";
+        private static final String KEY_KEYBOARD_BRIGHTNESS = "keyboard_brightness";
+        private static final String KEY_BUTTON_BRIGHTNESS = "button_brightness";
+        private static final String KEY_BUTTON_TIMEOUT = "button_timeout";
+        private static final String KEY_BUTTON_ONLY_PRESSED = "button_only_when_pressed";
 
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.device_settings, rootKey);
 
+            // IME switcher shortcut
             ListPreference imeSwitcher = findPreference(KEY_IME_SWITCHER);
             if (imeSwitcher != null) {
                 int currentValue = Settings.Secure.getInt(
@@ -46,19 +53,96 @@ public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
                 imeSwitcher.setSummary(imeSwitcher.getEntry());
                 imeSwitcher.setOnPreferenceChangeListener(this);
             }
+
+            // Keyboard brightness (0.0 - 1.0 stored, 0-100 displayed)
+            SeekBarPreference kbdBright = findPreference(KEY_KEYBOARD_BRIGHTNESS);
+            if (kbdBright != null) {
+                float current = Settings.Secure.getFloat(
+                        getContext().getContentResolver(),
+                        "keyboard_brightness", -1.0f);
+                kbdBright.setValue(current >= 0 ? Math.round(current * 100) : 100);
+                kbdBright.setOnPreferenceChangeListener(this);
+            }
+
+            // Button brightness (0.0 - 1.0 stored, 0-100 displayed)
+            SeekBarPreference btnBright = findPreference(KEY_BUTTON_BRIGHTNESS);
+            if (btnBright != null) {
+                float current = Settings.Secure.getFloat(
+                        getContext().getContentResolver(),
+                        "button_brightness", -1.0f);
+                btnBright.setValue(current >= 0 ? Math.round(current * 100) : 100);
+                btnBright.setOnPreferenceChangeListener(this);
+            }
+
+            // Button timeout
+            ListPreference btnTimeout = findPreference(KEY_BUTTON_TIMEOUT);
+            if (btnTimeout != null) {
+                int current = Settings.Secure.getInt(
+                        getContext().getContentResolver(),
+                        "button_backlight_timeout", 5000);
+                btnTimeout.setValue(String.valueOf(current));
+                btnTimeout.setSummary(btnTimeout.getEntry());
+                btnTimeout.setOnPreferenceChangeListener(this);
+            }
+
+            // Button only when pressed
+            SwitchPreference btnPressed = findPreference(KEY_BUTTON_ONLY_PRESSED);
+            if (btnPressed != null) {
+                int current = Settings.Secure.getInt(
+                        getContext().getContentResolver(),
+                        "button_backlight_only_when_pressed", 0);
+                btnPressed.setChecked(current == 1);
+                btnPressed.setOnPreferenceChangeListener(this);
+            }
         }
 
         @Override
         public boolean onPreferenceChange(Preference preference, Object newValue) {
-            if (KEY_IME_SWITCHER.equals(preference.getKey())) {
-                int value = Integer.parseInt((String) newValue);
-                Settings.Secure.putInt(
-                        getContext().getContentResolver(),
-                        "ime_switcher_shortcut", value);
-                ListPreference listPref = (ListPreference) preference;
-                int index = listPref.findIndexOfValue((String) newValue);
-                listPref.setSummary(listPref.getEntries()[index]);
-                return true;
+            String key = preference.getKey();
+
+            switch (key) {
+                case KEY_IME_SWITCHER: {
+                    int value = Integer.parseInt((String) newValue);
+                    Settings.Secure.putInt(
+                            getContext().getContentResolver(),
+                            "ime_switcher_shortcut", value);
+                    ListPreference lp = (ListPreference) preference;
+                    int idx = lp.findIndexOfValue((String) newValue);
+                    lp.setSummary(lp.getEntries()[idx]);
+                    return true;
+                }
+                case KEY_KEYBOARD_BRIGHTNESS: {
+                    int percent = (int) newValue;
+                    Settings.Secure.putFloat(
+                            getContext().getContentResolver(),
+                            "keyboard_brightness", percent / 100.0f);
+                    return true;
+                }
+                case KEY_BUTTON_BRIGHTNESS: {
+                    int percent = (int) newValue;
+                    Settings.Secure.putFloat(
+                            getContext().getContentResolver(),
+                            "button_brightness", percent / 100.0f);
+                    return true;
+                }
+                case KEY_BUTTON_TIMEOUT: {
+                    int value = Integer.parseInt((String) newValue);
+                    Settings.Secure.putInt(
+                            getContext().getContentResolver(),
+                            "button_backlight_timeout", value);
+                    ListPreference lp = (ListPreference) preference;
+                    int idx = lp.findIndexOfValue((String) newValue);
+                    lp.setSummary(lp.getEntries()[idx]);
+                    return true;
+                }
+                case KEY_BUTTON_ONLY_PRESSED: {
+                    boolean checked = (boolean) newValue;
+                    Settings.Secure.putInt(
+                            getContext().getContentResolver(),
+                            "button_backlight_only_when_pressed",
+                            checked ? 1 : 0);
+                    return true;
+                }
             }
             return false;
         }

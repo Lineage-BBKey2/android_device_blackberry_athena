@@ -9,4 +9,38 @@
         android:entryValues="@array/ime_switcher_shortcut_values"
         android:defaultValue="0" />
 
+    <PreferenceCategory
+        android:key="backlight_category"
+        android:title="@string/backlight_category">
+
+        <SeekBarPreference
+            android:key="keyboard_brightness"
+            android:title="@string/keyboard_brightness_title"
+            android:summary="@string/keyboard_brightness_summary"
+            android:max="100"
+            android:defaultValue="100" />
+
+        <SeekBarPreference
+            android:key="button_brightness"
+            android:title="@string/button_brightness_title"
+            android:summary="@string/button_brightness_summary"
+            android:max="100"
+            android:defaultValue="100" />
+
+        <ListPreference
+            android:key="button_timeout"
+            android:title="@string/button_timeout_title"
+            android:summary="@string/button_timeout_summary"
+            android:entries="@array/button_timeout_entries"
+            android:entryValues="@array/button_timeout_values"
+            android:defaultValue="5000" />
+
+        <SwitchPreference
+            android:key="button_only_when_pressed"
+            android:title="@string/button_only_when_pressed_title"
+            android:summary="@string/button_only_when_pressed_summary"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
