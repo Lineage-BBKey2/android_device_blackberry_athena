@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:key="ime_switcher_shortcut"
+        android:title="@string/ime_switcher_shortcut_title"
+        android:summary="@string/ime_switcher_shortcut_summary"
+        android:entries="@array/ime_switcher_shortcut_entries"
+        android:entryValues="@array/ime_switcher_shortcut_values"
+        android:defaultValue="0" />
+
+</PreferenceScreen>

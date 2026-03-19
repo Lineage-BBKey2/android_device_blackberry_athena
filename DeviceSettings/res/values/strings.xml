@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="device_settings_title">BlackBerry keyboard</string>
+    <string name="device_settings_summary">Keyboard shortcuts and input settings</string>
+
+    <string name="ime_switcher_shortcut_title">IME switcher shortcut</string>
+    <string name="ime_switcher_shortcut_summary">Key combination to open input method picker</string>
+
+    <string name="ime_shortcut_sym">SYM key</string>
+    <string name="ime_shortcut_alt_enter">Alt + Enter</string>
+    <string name="ime_shortcut_shift_space">Shift + Space</string>
+    <string name="ime_shortcut_ctrl">Ctrl key</string>
+</resources>

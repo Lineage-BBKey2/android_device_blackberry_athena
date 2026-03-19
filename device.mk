@@ -56,6 +56,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     K12KB
 
+# Device settings
+PRODUCT_PACKAGES += \
+    DeviceSettings
+
 # Goodix shims
 PRODUCT_PACKAGES += \
     libbinder_shim.vendor \
