@@ -48,6 +48,14 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk)
 # GMS
 PRODUCT_GMS_CLIENTID_BASE := android-blackberry
 
+# Lokker
+PRODUCT_PACKAGES += \
+    Lokker
+
+# K12KB keyboard app
+PRODUCT_PACKAGES += \
+    K12KB
+
 # Goodix shims
 PRODUCT_PACKAGES += \
     libbinder_shim.vendor \
