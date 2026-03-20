@@ -19,7 +19,7 @@
     <string name="button_timeout_title">Button backlight timeout</string>
     <string name="button_timeout_summary">Time before button backlight turns off</string>
     <string name="button_only_when_pressed_title">Only light on press</string>
-    <string name="button_only_when_pressed_summary">Only show button backlight when pressed</string>
+    <string name="button_only_when_pressed_summary">Only show button backlight when pressed (requires timeout set)</string>
 
     <string name="timeout_disabled">Disabled</string>
     <string name="timeout_1s">1 second</string>
