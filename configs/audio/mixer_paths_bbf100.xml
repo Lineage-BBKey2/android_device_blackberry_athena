@@ -1454,6 +1454,23 @@
         <path name="compress-offload-playback9 bt-sco-wb" />
     </path>
 
+    <path name="audio-record-voip">
+        <ctl name="MultiMedia1 Mixer INT3_MI2S_TX" value="1" />
+    </path>
+
+    <path name="audio-record-voip bt-sco">
+        <ctl name="MultiMedia1 Mixer SLIM_7_TX" value="1" />
+    </path>
+
+    <path name="audio-record-voip bt-sco-wb">
+        <ctl name="BT SampleRate" value="KHZ_16" />
+        <path name="audio-record-voip bt-sco" />
+    </path>
+
+    <path name="audio-record-voip usb-headset-mic">
+        <ctl name="MultiMedia1 Mixer USB_AUDIO_TX" value="1" />
+    </path>
+
     <path name="audio-record">
         <ctl name="MultiMedia1 Mixer INT3_MI2S_TX" value="1" />
     </path>
