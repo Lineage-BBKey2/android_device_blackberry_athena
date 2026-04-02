@@ -33,6 +33,7 @@ public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
     public static class DeviceSettingsFragment extends PreferenceFragmentCompat
             implements Preference.OnPreferenceChangeListener {
 
+        private static final String KEY_SHOW_IME = "show_ime_with_hard_keyboard";
         private static final String KEY_IME_SWITCHER = "ime_switcher_shortcut";
         private static final String KEY_KEYBOARD_BRIGHTNESS = "keyboard_brightness";
         private static final String KEY_BUTTON_BRIGHTNESS = "button_brightness";
@@ -42,6 +43,16 @@ public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.device_settings, rootKey);
+
+            // Show on-screen keyboard with hardware keyboard
+            SwitchPreference showIme = findPreference(KEY_SHOW_IME);
+            if (showIme != null) {
+                int current = Settings.Secure.getInt(
+                        getContext().getContentResolver(),
+                        Settings.Secure.SHOW_IME_WITH_HARD_KEYBOARD, 0);
+                showIme.setChecked(current == 1);
+                showIme.setOnPreferenceChangeListener(this);
+            }
 
             // IME switcher shortcut
             ListPreference imeSwitcher = findPreference(KEY_IME_SWITCHER);
@@ -101,6 +112,14 @@ public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
             String key = preference.getKey();
 
             switch (key) {
+                case KEY_SHOW_IME: {
+                    boolean checked = (boolean) newValue;
+                    Settings.Secure.putInt(
+                            getContext().getContentResolver(),
+                            Settings.Secure.SHOW_IME_WITH_HARD_KEYBOARD,
+                            checked ? 1 : 0);
+                    return true;
+                }
                 case KEY_IME_SWITCHER: {
                     int value = Integer.parseInt((String) newValue);
                     Settings.Secure.putInt(
