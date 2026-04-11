@@ -52,6 +52,9 @@ PRODUCT_GMS_CLIENTID_BASE := android-blackberry
 PRODUCT_PACKAGES += \
     Lokker
 
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/prebuilt/com.lokker.app.privapp-permissions.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/com.lokker.app.privapp-permissions.xml
+
 # K12KB keyboard app
 PRODUCT_PACKAGES += \
     K12KB
