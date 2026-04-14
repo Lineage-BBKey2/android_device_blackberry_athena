@@ -40,7 +40,16 @@ TARGET_SCREEN_WIDTH := 1080
 # Camera shims
 PRODUCT_PACKAGES += \
     libskia_shim \
-    libjnigraphics_shim
+    libjnigraphics_shim \
+    libcameracompat
+
+# Camera gralloc compat init override
+PRODUCT_COPY_FILES += \
+    device/blackberry/sdm660-common/camera/libcameracompat/init.cameracompat.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.cameracompat.rc
+
+# BB OREO camera HAL needs libexif (was VNDK in Android 8, removed since)
+PRODUCT_PACKAGES += \
+    libexif.vendor
 
 # Dalvik
 $(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk)
@@ -56,6 +65,12 @@ PRODUCT_PACKAGES += \
 # Touch Keypad - source not available for LOS23
 #PRODUCT_PACKAGES += \
 #    vendor.blackberry.touchkeypad-service
+
+# Lokker (privileged system_ext app) + K12KB (product app)
+PRODUCT_PACKAGES += \
+    Lokker \
+    com.lokker.app.privapp-permissions \
+    K12KB
 
 # Inherit from BlackBerry sdm660-common
 $(call inherit-product, device/blackberry/sdm660-common/common.mk)
