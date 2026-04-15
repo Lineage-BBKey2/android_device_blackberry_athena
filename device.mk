@@ -70,7 +70,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Lokker \
     com.lokker.app.privapp-permissions \
-    K12KB
+    K12KB \
+    DeviceSettings
 
 # Inherit from BlackBerry sdm660-common
 $(call inherit-product, device/blackberry/sdm660-common/common.mk)
