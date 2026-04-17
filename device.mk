@@ -15,6 +15,18 @@
 
 DEVICE_PATH := device/blackberry/athena
 
+# Build ID
+TARGET_UNOFFICIAL_BUILD_ID := krab-v2.0b
+
+# Signing keys
+PRODUCT_DEFAULT_DEV_CERTIFICATE := /data4/LOS23-build/signing-keys/releasekey
+
+# Make userdebug actually debuggable (LOS23 defaults to non-debuggable
+# userdebug which breaks recovery sideload). WITH_ADB_INSECURE is
+# checked by vendor/lineage/config/common.mk before it would otherwise
+# set ro.adb.secure=1 + PRODUCT_NOT_DEBUGGABLE_IN_USERDEBUG.
+WITH_ADB_INSECURE := true
+
 # Vendor blobs
 $(call inherit-product, vendor/blackberry/athena/athena-vendor.mk)
 
