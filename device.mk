@@ -16,7 +16,7 @@
 DEVICE_PATH := device/blackberry/athena
 
 # Build ID
-TARGET_UNOFFICIAL_BUILD_ID := krab-v2.0b
+TARGET_UNOFFICIAL_BUILD_ID := krab-v2.0d
 
 # Signing keys
 PRODUCT_DEFAULT_DEV_CERTIFICATE := /data4/LOS23-build/signing-keys/releasekey
