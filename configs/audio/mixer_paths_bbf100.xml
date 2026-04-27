@@ -2169,6 +2169,9 @@
 
     <path name="voice-headphones">
 <!--        <path name="headphones" /> -->
+        <ctl name="AK4376 BICK Frequency Select" value="fs_64" />
+        <ctl name="HPH SRC" value="AKM" />
+        <ctl name="AK4376 PDN Control" value="on" />
         <ctl name="INT0_MI2S_RX Channels" value="Two" />
         <ctl name="RX1 MIX1 INP1" value="RX1" />
         <ctl name="RX2 MIX1 INP1" value="RX2" />
