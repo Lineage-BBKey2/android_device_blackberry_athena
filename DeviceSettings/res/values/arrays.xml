@@ -15,12 +15,11 @@
     </string-array>
 
     <string-array name="button_timeout_entries">
-        <item>@string/timeout_disabled</item>
+        <item>@string/timeout_always</item>
         <item>@string/timeout_1s</item>
         <item>@string/timeout_2s</item>
         <item>@string/timeout_5s</item>
         <item>@string/timeout_10s</item>
-        <item>@string/timeout_always</item>
     </string-array>
 
     <string-array name="button_timeout_values">
@@ -29,6 +28,5 @@
         <item>2000</item>
         <item>5000</item>
         <item>10000</item>
-        <item>-1</item>
     </string-array>
 </resources>

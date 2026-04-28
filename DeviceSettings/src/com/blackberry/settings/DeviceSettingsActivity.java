@@ -38,7 +38,6 @@ public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
         private static final String KEY_KEYBOARD_BRIGHTNESS = "keyboard_brightness";
         private static final String KEY_BUTTON_BRIGHTNESS = "button_brightness";
         private static final String KEY_BUTTON_TIMEOUT = "button_timeout";
-        private static final String KEY_BUTTON_ONLY_PRESSED = "button_only_when_pressed";
 
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -90,21 +89,17 @@ public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
             if (btnTimeout != null) {
                 int current = Settings.Secure.getInt(
                         getContext().getContentResolver(),
-                        "button_backlight_timeout", 5000);
+                        "button_backlight_timeout", 0);
                 btnTimeout.setValue(String.valueOf(current));
                 btnTimeout.setSummary(btnTimeout.getEntry());
                 btnTimeout.setOnPreferenceChangeListener(this);
             }
 
-            // Button only when pressed
-            SwitchPreference btnPressed = findPreference(KEY_BUTTON_ONLY_PRESSED);
-            if (btnPressed != null) {
-                int current = Settings.Secure.getInt(
-                        getContext().getContentResolver(),
-                        "button_backlight_only_when_pressed", 0);
-                btnPressed.setChecked(current == 1);
-                btnPressed.setOnPreferenceChangeListener(this);
-            }
+            // Make sure stale "only when pressed" overrides don't leak through
+            // after we removed the toggle from the UI.
+            Settings.Secure.putInt(
+                    getContext().getContentResolver(),
+                    "button_backlight_only_when_pressed", 0);
         }
 
         @Override
@@ -152,14 +147,6 @@ public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
                     ListPreference lp = (ListPreference) preference;
                     int idx = lp.findIndexOfValue((String) newValue);
                     lp.setSummary(lp.getEntries()[idx]);
-                    return true;
-                }
-                case KEY_BUTTON_ONLY_PRESSED: {
-                    boolean checked = (boolean) newValue;
-                    Settings.Secure.putInt(
-                            getContext().getContentResolver(),
-                            "button_backlight_only_when_pressed",
-                            checked ? 1 : 0);
                     return true;
                 }
             }

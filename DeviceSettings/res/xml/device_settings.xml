@@ -39,13 +39,7 @@
             android:summary="@string/button_timeout_summary"
             android:entries="@array/button_timeout_entries"
             android:entryValues="@array/button_timeout_values"
-            android:defaultValue="5000" />
-
-        <SwitchPreference
-            android:key="button_only_when_pressed"
-            android:title="@string/button_only_when_pressed_title"
-            android:summary="@string/button_only_when_pressed_summary"
-            android:defaultValue="false" />
+            android:defaultValue="0" />
 
     </PreferenceCategory>
 
