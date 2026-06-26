@@ -9,10 +9,10 @@
     <string name="ime_switcher_shortcut_title">IME switcher shortcut</string>
     <string name="ime_switcher_shortcut_summary">Key combination to open input method picker</string>
 
-    <string name="ime_shortcut_sym">SYM key</string>
     <string name="ime_shortcut_alt_enter">Alt + Enter</string>
     <string name="ime_shortcut_shift_space">Shift + Space</string>
     <string name="ime_shortcut_ctrl">Ctrl key</string>
+    <string name="ime_shortcut_sym">SYM key</string>
 
     <string name="backlight_category">Backlight</string>
     <string name="keyboard_brightness_title">Keyboard brightness</string>

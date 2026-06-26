@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="ime_switcher_shortcut_entries">
-        <item>@string/ime_shortcut_sym</item>
         <item>@string/ime_shortcut_alt_enter</item>
         <item>@string/ime_shortcut_shift_space</item>
         <item>@string/ime_shortcut_ctrl</item>
+        <item>@string/ime_shortcut_sym</item>
     </string-array>
 
     <string-array name="ime_switcher_shortcut_values">
