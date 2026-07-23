@@ -2,6 +2,12 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <SwitchPreference
+        android:key="keyboard_pin_input"
+        android:title="@string/keyboard_pin_input_title"
+        android:summary="@string/keyboard_pin_input_summary"
+        android:defaultValue="true" />
+
+    <SwitchPreference
         android:key="show_ime_with_hard_keyboard"
         android:title="@string/show_ime_title"
         android:summary="@string/show_ime_summary"

@@ -33,6 +33,7 @@ public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
     public static class DeviceSettingsFragment extends PreferenceFragmentCompat
             implements Preference.OnPreferenceChangeListener {
 
+        private static final String KEY_PIN_INPUT = "keyboard_pin_input";
         private static final String KEY_SHOW_IME = "show_ime_with_hard_keyboard";
         private static final String KEY_IME_SWITCHER = "ime_switcher_shortcut";
         private static final String KEY_KEYBOARD_BRIGHTNESS = "keyboard_brightness";
@@ -43,6 +44,16 @@ public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.device_settings, rootKey);
+
+            // Lockscreen PIN with keyboard
+            SwitchPreference pinInput = findPreference(KEY_PIN_INPUT);
+            if (pinInput != null) {
+                int current = Settings.Secure.getInt(
+                        getContext().getContentResolver(),
+                        "keyboard_pin_input", 1);
+                pinInput.setChecked(current == 1);
+                pinInput.setOnPreferenceChangeListener(this);
+            }
 
             // Show on-screen keyboard with hardware keyboard
             SwitchPreference showIme = findPreference(KEY_SHOW_IME);
@@ -112,6 +123,14 @@ public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
             String key = preference.getKey();
 
             switch (key) {
+                case KEY_PIN_INPUT: {
+                    boolean checked = (boolean) newValue;
+                    Settings.Secure.putInt(
+                            getContext().getContentResolver(),
+                            "keyboard_pin_input",
+                            checked ? 1 : 0);
+                    return true;
+                }
                 case KEY_SHOW_IME: {
                     boolean checked = (boolean) newValue;
                     Settings.Secure.putInt(
