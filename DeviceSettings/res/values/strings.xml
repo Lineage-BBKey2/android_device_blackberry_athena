@@ -18,8 +18,12 @@
     <string name="ime_shortcut_sym">SYM key</string>
 
     <string name="backlight_category">Backlight</string>
+    <string name="keyboard_adaptive_brightness_title">Keyboard adaptive brightness</string>
+    <string name="keyboard_adaptive_brightness_summary">Keyboard backlight scales with screen brightness and turns off with bright screen</string>
     <string name="keyboard_brightness_title">Keyboard brightness</string>
     <string name="keyboard_brightness_summary">Brightness level for keyboard backlight</string>
+    <string name="button_adaptive_brightness_title">Button adaptive brightness</string>
+    <string name="button_adaptive_brightness_summary">Navigation button backlight scales with screen brightness</string>
     <string name="button_brightness_title">Button brightness</string>
     <string name="button_brightness_summary">Brightness level for navigation buttons</string>
     <string name="button_timeout_title">Button backlight timeout</string>

@@ -25,12 +25,24 @@
         android:key="backlight_category"
         android:title="@string/backlight_category">
 
+        <SwitchPreference
+            android:key="keyboard_adaptive_brightness"
+            android:title="@string/keyboard_adaptive_brightness_title"
+            android:summary="@string/keyboard_adaptive_brightness_summary"
+            android:defaultValue="true" />
+
         <SeekBarPreference
             android:key="keyboard_brightness"
             android:title="@string/keyboard_brightness_title"
             android:summary="@string/keyboard_brightness_summary"
             android:max="100"
             android:defaultValue="100" />
+
+        <SwitchPreference
+            android:key="button_adaptive_brightness"
+            android:title="@string/button_adaptive_brightness_title"
+            android:summary="@string/button_adaptive_brightness_summary"
+            android:defaultValue="true" />
 
         <SeekBarPreference
             android:key="button_brightness"

@@ -36,7 +36,9 @@ public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
         private static final String KEY_PIN_INPUT = "keyboard_pin_input";
         private static final String KEY_SHOW_IME = "show_ime_with_hard_keyboard";
         private static final String KEY_IME_SWITCHER = "ime_switcher_shortcut";
+        private static final String KEY_ADPT_KEYBOARD_BRIGHTNESS = "keyboard_adaptive_brightness";
         private static final String KEY_KEYBOARD_BRIGHTNESS = "keyboard_brightness";
+        private static final String KEY_ADPT_BUTTON_BRIGHTNESS = "button_adaptive_brightness";
         private static final String KEY_BUTTON_BRIGHTNESS = "button_brightness";
         private static final String KEY_BUTTON_TIMEOUT = "button_timeout";
         private static final String KEY_BUTTON_ONLY_PRESSED = "button_only_when_pressed";
@@ -76,6 +78,16 @@ public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
                 imeSwitcher.setOnPreferenceChangeListener(this);
             }
 
+            // Adaptive keyboard brightness
+            SwitchPreference kbdAdptBright = findPreference(KEY_ADPT_KEYBOARD_BRIGHTNESS);
+            if (kbdAdptBright != null) {
+                int current = Settings.Secure.getInt(
+                        getContext().getContentResolver(),
+                        "keyboard_adaptive_brightness", 1);
+                kbdAdptBright.setChecked(current == 1);
+                kbdAdptBright.setOnPreferenceChangeListener(this);
+            }
+
             // Keyboard brightness (0.0 - 1.0 stored, 0-100 displayed)
             SeekBarPreference kbdBright = findPreference(KEY_KEYBOARD_BRIGHTNESS);
             if (kbdBright != null) {
@@ -84,6 +96,16 @@ public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
                         "keyboard_brightness", -1.0f);
                 kbdBright.setValue(current >= 0 ? Math.round(current * 100) : 100);
                 kbdBright.setOnPreferenceChangeListener(this);
+            }
+
+            // Adaptive button brightness
+            SwitchPreference btnAdptBright = findPreference(KEY_ADPT_BUTTON_BRIGHTNESS);
+            if (btnAdptBright != null) {
+                int current = Settings.Secure.getInt(
+                        getContext().getContentResolver(),
+                        "button_adaptive_brightness", 1);
+                btnAdptBright.setChecked(current == 1);
+                btnAdptBright.setOnPreferenceChangeListener(this);
             }
 
             // Button brightness (0.0 - 1.0 stored, 0-100 displayed)
@@ -149,11 +171,27 @@ public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
                     lp.setSummary(lp.getEntries()[idx]);
                     return true;
                 }
+                case KEY_ADPT_KEYBOARD_BRIGHTNESS: {
+                    boolean checked = (boolean) newValue;
+                    Settings.Secure.putInt(
+                            getContext().getContentResolver(),
+                            "keyboard_adaptive_brightness",
+                            checked ? 1 : 0);
+                    return true;
+                }
                 case KEY_KEYBOARD_BRIGHTNESS: {
                     int percent = (int) newValue;
                     Settings.Secure.putFloat(
                             getContext().getContentResolver(),
                             "keyboard_brightness", percent / 100.0f);
+                    return true;
+                }
+                case KEY_ADPT_BUTTON_BRIGHTNESS: {
+                    boolean checked = (boolean) newValue;
+                    Settings.Secure.putInt(
+                            getContext().getContentResolver(),
+                            "button_adaptive_brightness",
+                            checked ? 1 : 0);
                     return true;
                 }
                 case KEY_BUTTON_BRIGHTNESS: {
