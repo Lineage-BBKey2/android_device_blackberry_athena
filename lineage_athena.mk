@@ -27,3 +27,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     DeviceProduct=bbf100dsglobal \
     DeviceName=bbf100 \
     SystemDevice=bbf100
+
+# OTA Updater
+PRODUCT_PROPERTY_OVERRIDES += \
+    lineage.updater.uri=https://raw.githubusercontent.com/Lineage-BBKey2/distribution/main/{device}.json

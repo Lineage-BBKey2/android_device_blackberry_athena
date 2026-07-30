@@ -59,6 +59,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     K12KB
 
+# Touchkeypad
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/init/init.athena.touchkeypad.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.athena.touchkeypad.rc \
+    $(DEVICE_PATH)/init/ueventd.athena.rc:$(TARGET_COPY_OUT_VENDOR)/etc/ueventd/ueventd.athena.rc
+
 # Device settings
 PRODUCT_PACKAGES += \
     DeviceSettings
