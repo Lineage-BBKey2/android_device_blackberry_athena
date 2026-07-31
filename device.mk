@@ -66,7 +66,7 @@ PRODUCT_COPY_FILES += \
 
 # Device settings
 PRODUCT_PACKAGES += \
-    DeviceSettings
+    DeviceSettings_athena
 
 # Goodix shims
 PRODUCT_PACKAGES += \

@@ -1,5 +1,5 @@
 android_app {
-    name: "DeviceSettings",
+    name: "DeviceSettings_athena",
     defaults: ["SettingsLibDefaults"],
     srcs: ["src/**/*.java"],
     resource_dirs: ["res"],
