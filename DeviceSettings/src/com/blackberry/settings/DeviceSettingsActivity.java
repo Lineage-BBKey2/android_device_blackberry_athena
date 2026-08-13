@@ -38,9 +38,11 @@ public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
         private static final String KEY_IME_SWITCHER = "ime_switcher_shortcut";
         private static final String KEY_ADPT_KEYBOARD_BRIGHTNESS = "keyboard_adaptive_brightness";
         private static final String KEY_KEYBOARD_BRIGHTNESS = "keyboard_brightness";
+        private static final String KEY_KEYBOARD_TIMEOUT = "keyboard_backlight_timeout";
+        private static final String KEY_KEYBOARD_ONLY_PRESSED = "keyboard_backlight_only_when_pressed";
         private static final String KEY_ADPT_BUTTON_BRIGHTNESS = "button_adaptive_brightness";
         private static final String KEY_BUTTON_BRIGHTNESS = "button_brightness";
-        private static final String KEY_BUTTON_TIMEOUT = "button_timeout";
+        private static final String KEY_BUTTON_TIMEOUT = "button_backlight_timeout";
         private static final String KEY_BUTTON_ONLY_PRESSED = "button_only_when_pressed";
 
         @Override
@@ -96,6 +98,27 @@ public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
                         "keyboard_brightness", -1.0f);
                 kbdBright.setValue(current >= 0 ? Math.round(current * 100) : 100);
                 kbdBright.setOnPreferenceChangeListener(this);
+            }
+
+            // Keyboard backlight timeout
+            ListPreference kbdTimeout = findPreference(KEY_KEYBOARD_TIMEOUT);
+            if (kbdTimeout != null) {
+                int current = Settings.Secure.getInt(
+                        getContext().getContentResolver(),
+                        "keyboard_backlight_timeout", 0);
+                kbdTimeout.setValue(String.valueOf(current));
+                kbdTimeout.setSummary(kbdTimeout.getEntry());
+                kbdTimeout.setOnPreferenceChangeListener(this);
+            }
+
+            // Keyboard backlight only when pressed
+            SwitchPreference kbdPressed = findPreference(KEY_KEYBOARD_ONLY_PRESSED);
+            if (kbdPressed != null) {
+                int current = Settings.Secure.getInt(
+                        getContext().getContentResolver(),
+                        "keyboard_backlight_only_when_pressed", 0);
+                kbdPressed.setChecked(current == 1);
+                kbdPressed.setOnPreferenceChangeListener(this);
             }
 
             // Adaptive button brightness
@@ -184,6 +207,24 @@ public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
                     Settings.Secure.putFloat(
                             getContext().getContentResolver(),
                             "keyboard_brightness", percent / 100.0f);
+                    return true;
+                }
+                case KEY_KEYBOARD_TIMEOUT: {
+                    int value = Integer.parseInt((String) newValue);
+                    Settings.Secure.putInt(
+                            getContext().getContentResolver(),
+                            "keyboard_backlight_timeout", value);
+                    ListPreference lp = (ListPreference) preference;
+                    int idx = lp.findIndexOfValue((String) newValue);
+                    lp.setSummary(lp.getEntries()[idx]);
+                    return true;
+                }
+                case KEY_KEYBOARD_ONLY_PRESSED: {
+                    boolean checked = (boolean) newValue;
+                    Settings.Secure.putInt(
+                            getContext().getContentResolver(),
+                            "keyboard_backlight_only_when_pressed",
+                            checked ? 1 : 0);
                     return true;
                 }
                 case KEY_ADPT_BUTTON_BRIGHTNESS: {

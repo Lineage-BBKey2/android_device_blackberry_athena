@@ -22,8 +22,8 @@
         android:defaultValue="0" />
 
     <PreferenceCategory
-        android:key="backlight_category"
-        android:title="@string/backlight_category">
+        android:key="keyboard_backlight_category"
+        android:title="@string/keyboard_backlight_category">
 
         <SwitchPreference
             android:key="keyboard_adaptive_brightness"
@@ -37,6 +37,26 @@
             android:summary="@string/keyboard_brightness_summary"
             android:max="100"
             android:defaultValue="100" />
+
+        <ListPreference
+            android:key="keyboard_backlight_timeout"
+            android:title="@string/keyboard_backlight_timeout_title"
+            android:summary="@string/keyboard_backlight_timeout_summary"
+            android:entries="@array/backlight_timeout_entries"
+            android:entryValues="@array/backlight_timeout_values"
+            android:defaultValue="0" />
+
+        <SwitchPreference
+            android:key="keyboard_backlight_only_when_pressed"
+            android:title="@string/keyboard_only_when_pressed_title"
+            android:summary="@string/keyboard_only_when_pressed_summary"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="button_backlight_category"
+        android:title="@string/button_backlight_category">
 
         <SwitchPreference
             android:key="button_adaptive_brightness"
@@ -52,11 +72,11 @@
             android:defaultValue="100" />
 
         <ListPreference
-            android:key="button_timeout"
-            android:title="@string/button_timeout_title"
-            android:summary="@string/button_timeout_summary"
-            android:entries="@array/button_timeout_entries"
-            android:entryValues="@array/button_timeout_values"
+            android:key="button_backlight_timeout"
+            android:title="@string/button_backlight_timeout_title"
+            android:summary="@string/button_backlight_timeout_summary"
+            android:entries="@array/backlight_timeout_entries"
+            android:entryValues="@array/backlight_timeout_values"
             android:defaultValue="5000" />
 
         <SwitchPreference
