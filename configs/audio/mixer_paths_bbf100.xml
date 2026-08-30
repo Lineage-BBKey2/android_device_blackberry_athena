@@ -2168,7 +2168,9 @@
     </path>
 
     <path name="voice-headphones">
-<!--        <path name="headphones" /> -->
+        <!-- Route in-call RX through the internal SDM codec. CVP voice-RX
+             does not reach the AK4376 media path, so inheriting headphones
+             here would leave wired-headset call audio silent. -->
         <ctl name="INT0_MI2S_RX Channels" value="Two" />
         <ctl name="RX1 MIX1 INP1" value="RX1" />
         <ctl name="RX2 MIX1 INP1" value="RX2" />
