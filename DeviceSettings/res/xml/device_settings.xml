@@ -1,32 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <SwitchPreference
-        android:key="keyboard_touchpad_enabled"
-        android:title="@string/keyboard_touchpad_enabled_title"
-        android:summary="@string/keyboard_touchpad_enabled_summary"
-        android:persistent="false"
-        android:defaultValue="true" />
+    <PreferenceCategory
+        android:key="keyboard_category"
+        android:title="@string/keyboard_category">
 
-    <SwitchPreference
-        android:key="keyboard_pin_input"
-        android:title="@string/keyboard_pin_input_title"
-        android:summary="@string/keyboard_pin_input_summary"
-        android:defaultValue="true" />
+        <SwitchPreference
+            android:key="keyboard_touchpad_enabled"
+            android:title="@string/keyboard_touchpad_enabled_title"
+            android:summary="@string/keyboard_touchpad_enabled_summary"
+            android:persistent="false"
+            android:defaultValue="true" />
 
-    <SwitchPreference
-        android:key="show_ime_with_hard_keyboard"
-        android:title="@string/show_ime_title"
-        android:summary="@string/show_ime_summary"
-        android:defaultValue="true" />
+        <SwitchPreference
+            android:key="keyboard_pin_input"
+            android:title="@string/keyboard_pin_input_title"
+            android:summary="@string/keyboard_pin_input_summary"
+            android:defaultValue="true" />
 
-    <ListPreference
-        android:key="ime_switcher_shortcut"
-        android:title="@string/ime_switcher_shortcut_title"
-        android:summary="@string/ime_switcher_shortcut_summary"
-        android:entries="@array/ime_switcher_shortcut_entries"
-        android:entryValues="@array/ime_switcher_shortcut_values"
-        android:defaultValue="0" />
+        <SwitchPreference
+            android:key="show_ime_with_hard_keyboard"
+            android:title="@string/show_ime_title"
+            android:summary="@string/show_ime_summary"
+            android:defaultValue="true" />
+
+        <ListPreference
+            android:key="ime_switcher_shortcut"
+            android:title="@string/ime_switcher_shortcut_title"
+            android:summary="@string/ime_switcher_shortcut_summary"
+            android:entries="@array/ime_switcher_shortcut_entries"
+            android:entryValues="@array/ime_switcher_shortcut_values"
+            android:defaultValue="0" />
+
+    </PreferenceCategory>
 
     <PreferenceCategory
         android:key="keyboard_backlight_category"
@@ -105,6 +111,19 @@
             android:title="@string/button_on_keyboard_touch_title"
             android:summary="@string/button_on_keyboard_touch_summary"
             android:dependency="button_only_when_pressed"
+            android:persistent="false"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="touchscreen_category"
+        android:title="@string/touchscreen_category">
+
+        <SwitchPreference
+            android:key="host_dt2w_enable"
+            android:title="@string/host_dt2w_title"
+            android:summary="@string/host_dt2w_summary"
             android:persistent="false"
             android:defaultValue="false" />
 

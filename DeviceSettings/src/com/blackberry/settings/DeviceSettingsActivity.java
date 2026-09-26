@@ -17,6 +17,8 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SeekBarPreference;
 import androidx.preference.SwitchPreference;
 
+import java.io.File;
+
 public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
 
     @Override
@@ -64,6 +66,14 @@ public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
                 "button_only_when_pressed";
         private static final String KEY_BUTTON_ON_KEYBOARD_TOUCH =
                 "button_backlight_on_keyboard_touch";
+        private static final String KEY_HOST_DT2W =
+                "host_dt2w_enable";
+        private static final String PROP_HOST_DT2W =
+                "persist.vendor.focaltech.host_dt2w";
+        private static final String SYSFS_HOST_DT2W =
+                "/sys/devices/virtual/tp_device/tp_gesture/host_dt2w_enable";
+        private static final String KEY_TOUCHSCREEN_CATEGORY =
+                "touchscreen_category";
 
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -77,6 +87,7 @@ public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
                         PROP_KEYBOARD_TOUCHPAD_POWER_DISABLED, false));
                 touchpadEnabled.setOnPreferenceChangeListener(this);
             }
+
             // Lockscreen PIN with keyboard
             SwitchPreference pinInput = findPreference(KEY_PIN_INPUT);
             if (pinInput != null) {
@@ -212,6 +223,21 @@ public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
                             btnPressed != null && btnPressed.isChecked();
                 btnOnKeyboardTouch.setChecked(!onlyWhenPressed || current == 1);
                 btnOnKeyboardTouch.setOnPreferenceChangeListener(this);
+            }
+
+            // FocalTech host-side double-tap-to-wake compatibility mode
+            Preference touchscreenCategory =
+                    findPreference(KEY_TOUCHSCREEN_CATEGORY);
+            SwitchPreference hostDt2w = findPreference(KEY_HOST_DT2W);
+            if (hostDt2w != null) {
+                if (new File(SYSFS_HOST_DT2W).exists()) {
+                    hostDt2w.setChecked(SystemProperties.getBoolean(
+                            PROP_HOST_DT2W, false));
+                    hostDt2w.setOnPreferenceChangeListener(this);
+                } else if (touchscreenCategory != null) {
+                    // Hide this FocalTech-only category on other panels.
+                    getPreferenceScreen().removePreference(touchscreenCategory);
+                }
             }
         }
 
@@ -363,6 +389,11 @@ public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
                             getContext().getContentResolver(),
                             "button_backlight_on_keyboard_touch",
                             checked ? 1 : 0);
+                    return true;
+                }
+                case KEY_HOST_DT2W: {
+                    boolean enabled = (boolean) newValue;
+                    SystemProperties.set(PROP_HOST_DT2W, enabled ? "1" : "0");
                     return true;
                 }
             }
