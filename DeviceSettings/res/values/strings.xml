@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="device_settings_title">BlackBerry keyboard</string>
-    <string name="device_settings_summary">Keyboard features and backlight settings</string>
+    <string name="device_settings_title">BlackBerry settings</string>
+    <string name="device_settings_summary">Customize BlackBerry keyboard and device features</string>
+
+    <string name="keyboard_category">Keyboard</string>
 
     <string name="keyboard_touchpad_enabled_title">Enable keyboard touchpad</string>
     <string name="keyboard_touchpad_enabled_summary">Power the capacitive keyboard touchpad for scrolling, gestures, and backlight activation</string>
@@ -31,6 +33,7 @@
     <string name="keyboard_only_when_pressed_summary">Keyboard backlight only turns on with key press</string>
     <string name="keyboard_on_touch_title">Light on keyboard touch</string>
     <string name="keyboard_on_touch_summary">Keyboard backlight also turns on with keyboard touch (requires keyboard touchpad enabled)</string>
+
     <string name="button_backlight_category">Button backlight</string>
     <string name="button_adaptive_brightness_title">Button adaptive brightness</string>
     <string name="button_adaptive_brightness_summary">Navigation button backlight scales with screen brightness</string>
@@ -50,4 +53,8 @@
     <string name="timeout_10s">10 seconds</string>
     <string name="timeout_30s">30 seconds</string>
     <string name="timeout_60s">1 minute</string>
+
+    <string name="touchscreen_category">Touchscreen</string>
+    <string name="host_dt2w_title">DT2W compatibility mode</string>
+    <string name="host_dt2w_summary">Alternate double-tap-to-wake detection. This may improve reliability for FocalTech touchscreens but can increase standby power.</string>
 </resources>
