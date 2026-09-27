@@ -66,7 +66,7 @@ PRODUCT_COPY_FILES += \
 
 # Device settings
 PRODUCT_PACKAGES += \
-    DeviceSettings_athena
+    BlackBerrySettings_athena
 
 # Goodix shims
 PRODUCT_PACKAGES += \

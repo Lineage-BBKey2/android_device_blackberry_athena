@@ -5,6 +5,11 @@
     <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
+    <queries>
+        <package android:name="com.blackberry.keyboard" />
+        <package android:name="com.blackberry.blackberrylauncher" />
+    </queries>
+
     <application
         android:label="@string/device_settings_title"
         android:icon="@drawable/ic_keyboard"
@@ -38,6 +43,12 @@
                 android:name="com.android.settings.profile"
                 android:value="primary_profile_only" />
         </activity>
+
+        <activity
+            android:name=".LegacyBlackBerryAppsActivity"
+            android:label="@string/legacy_blackberry_apps_title"
+            android:parentActivityName=".DeviceSettingsActivity"
+            android:exported="false" />
 
     </application>
 </manifest>

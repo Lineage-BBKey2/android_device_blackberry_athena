@@ -129,4 +129,18 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:title="@string/apps_category">
+
+        <Preference
+            android:key="legacy_blackberry_apps"
+            android:title="@string/legacy_blackberry_apps_title"
+            android:summary="@string/legacy_blackberry_apps_summary">
+            <intent
+                android:targetPackage="com.blackberry.settings"
+                android:targetClass="com.blackberry.settings.LegacyBlackBerryAppsActivity" />
+        </Preference>
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
