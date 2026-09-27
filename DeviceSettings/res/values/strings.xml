@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="device_settings_title">BlackBerry settings</string>
-    <string name="device_settings_summary">Customize BlackBerry keyboard and device features</string>
+    <string name="device_settings_summary">Physical keyboard settings, hardware configuration, legacy BlackBerry apps</string>
 
     <string name="keyboard_category">Keyboard</string>
 
@@ -57,4 +57,13 @@
     <string name="touchscreen_category">Touchscreen</string>
     <string name="host_dt2w_title">DT2W compatibility mode</string>
     <string name="host_dt2w_summary">Alternate double-tap-to-wake detection. This may improve reliability for FocalTech touchscreens but can increase standby power.</string>
+
+    <string name="apps_category">Apps</string>
+    <string name="legacy_blackberry_apps_title">Legacy BlackBerry apps</string>
+    <string name="legacy_blackberry_apps_summary">Install BlackBerry Keyboard and BlackBerry Launcher from Google Play</string>
+    <string name="legacy_blackberry_apps_instructions">Tap an app below to view it on Google Play.</string>
+    <string name="blackberry_keyboard_title">BlackBerry Keyboard</string>
+    <string name="blackberry_launcher_title">BlackBerry Launcher</string>
+    <string name="app_installed">Installed</string>
+    <string name="app_not_installed">Not installed</string>
 </resources>
