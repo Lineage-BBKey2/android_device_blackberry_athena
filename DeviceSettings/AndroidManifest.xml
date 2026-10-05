@@ -12,7 +12,7 @@
 
     <application
         android:label="@string/device_settings_title"
-        android:icon="@drawable/ic_keyboard"
+        android:icon="@drawable/ic_blackberry"
         android:theme="@style/Theme.SubSettingsBase"
         android:supportsRtl="true">
 
@@ -32,13 +32,13 @@
                 android:resource="@string/device_settings_summary" />
             <meta-data
                 android:name="com.android.settings.icon"
-                android:resource="@drawable/ic_keyboard" />
+                android:resource="@drawable/ic_blackberry" />
             <meta-data
                 android:name="com.android.settings.icon_tintable"
                 android:value="true" />
             <meta-data
                 android:name="com.android.settings.order"
-                android:value="-256" />
+                android:value="-261" />
             <meta-data
                 android:name="com.android.settings.profile"
                 android:value="primary_profile_only" />
