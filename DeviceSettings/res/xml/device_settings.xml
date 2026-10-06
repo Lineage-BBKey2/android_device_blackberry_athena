@@ -22,7 +22,7 @@
             android:key="show_ime_with_hard_keyboard"
             android:title="@string/show_ime_title"
             android:summary="@string/show_ime_summary"
-            android:defaultValue="true" />
+            android:defaultValue="false" />
 
         <ListPreference
             android:key="ime_switcher_shortcut"
