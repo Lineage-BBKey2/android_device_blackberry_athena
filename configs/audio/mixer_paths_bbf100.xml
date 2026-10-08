@@ -474,6 +474,31 @@
         <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia1" value="1" />
     </path>
 
+    <!--
+         PCM VoIP uses echo-reference-voip* while in
+         AUDIO_MODE_IN_COMMUNICATION when compressed VoIP is disabled.
+         Reuse Athena's existing device-specific EC reference routes.
+    -->
+    <path name="echo-reference-voip">
+        <path name="echo-reference speaker" />
+    </path>
+
+    <path name="echo-reference-voip handset">
+        <path name="echo-reference" />
+    </path>
+
+    <path name="echo-reference-voip speaker">
+        <path name="echo-reference speaker" />
+    </path>
+
+    <path name="echo-reference-voip headphones">
+        <path name="echo-reference headphones" />
+    </path>
+
+    <path name="echo-reference-voip headphones-44.1">
+        <path name="echo-reference headphones-44.1" />
+    </path>
+
     <path name="deep-buffer-playback speaker">
         <ctl name="TERT_MI2S_RX Audio Mixer MultiMedia1" value="1" />
     </path>
@@ -2339,6 +2364,13 @@
         <ctl name="DEC2 MUX" value="ADC1" />
         <ctl name="ADC2 MUX" value="INP3" />
         <ctl name="INT3_MI2S_TX Channels" value="Two" />
+    </path>
+
+    <!-- ACDB 117 speaker AEC+NS: ordering verified by the live mic-swap test. -->
+    <path name="speaker-dmic-endfire-aec-ns">
+        <path name="speaker-dmic-endfire" />
+        <ctl name="DEC1 MUX" value="ADC1" />
+        <ctl name="DEC2 MUX" value="ADC2" />
     </path>
 
     <path name="dmic-endfire">

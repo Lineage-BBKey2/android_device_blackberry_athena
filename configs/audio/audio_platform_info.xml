@@ -28,6 +28,9 @@
     <bit_width_configs>
         <device name="SND_DEVICE_OUT_SPEAKER" bit_width="24"/>
     </bit_width_configs>
+    <device_names>
+        <device name="SND_DEVICE_IN_SPEAKER_DMIC_AEC_NS" alias="speaker-dmic-endfire-aec-ns"/>
+    </device_names>
     <interface_names>
         <device name="AUDIO_DEVICE_IN_BUILTIN_MIC" interface="SLIMBUS_0" codec_type="external"/>
         <device name="AUDIO_DEVICE_IN_BACK_MIC" interface="SLIMBUS_0" codec_type="external"/>
