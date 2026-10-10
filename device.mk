@@ -64,6 +64,10 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/init/init.athena.touchkeypad.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.athena.touchkeypad.rc \
     $(DEVICE_PATH)/init/ueventd.athena.rc:$(TARGET_COPY_OUT_VENDOR)/etc/ueventd/ueventd.athena.rc
 
+# Recovery touchscreen firmware (available without mounting vendor)
+PRODUCT_COPY_FILES += \
+    vendor/blackberry/athena/proprietary/vendor/firmware/synaptics/athena_tp.img:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/firmware/synaptics/athena_tp.img
+
 # Device settings
 PRODUCT_PACKAGES += \
     BlackBerrySettings_athena
