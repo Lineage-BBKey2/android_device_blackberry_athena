@@ -144,7 +144,7 @@ public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
             if (kbdTimeout != null) {
                 int current = Settings.Secure.getInt(
                         getContext().getContentResolver(),
-                        "keyboard_backlight_timeout", 0);
+                        "keyboard_backlight_timeout", 10000);
                 kbdTimeout.setValue(String.valueOf(current));
                 kbdTimeout.setSummary(kbdTimeout.getEntry());
                 kbdTimeout.setOnPreferenceChangeListener(this);
@@ -197,7 +197,7 @@ public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
             if (btnTimeout != null) {
                 int current = Settings.Secure.getInt(
                         getContext().getContentResolver(),
-                        "button_backlight_timeout", 5000);
+                        "button_backlight_timeout", 10000);
                 btnTimeout.setValue(String.valueOf(current));
                 btnTimeout.setSummary(btnTimeout.getEntry());
                 btnTimeout.setOnPreferenceChangeListener(this);
