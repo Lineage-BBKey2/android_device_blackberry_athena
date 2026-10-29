@@ -2,35 +2,30 @@
  * Copyright (C) 2026 The LineageOS Project
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package com.blackberry.settings;
 
 import android.app.ActionBar;
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-
-import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
+import android.widget.Toast;
 
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
+import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
+
 public class LegacyBlackBerryAppsActivity extends CollapsingToolbarBaseActivity {
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        final ActionBar actionBar = getActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
-
-        if (savedInstanceState == null) {
-            getSupportFragmentManager()
-                    .beginTransaction()
+    protected void onCreate(Bundle state) {
+        super.onCreate(state);
+        final ActionBar bar = getActionBar();
+        if (bar != null) bar.setDisplayHomeAsUpEnabled(true);
+        if (state == null) {
+            getSupportFragmentManager().beginTransaction()
                     .replace(com.android.settingslib.collapsingtoolbar.R.id.content_frame,
                             new LegacyBlackBerryAppsFragment())
                     .commit();
@@ -38,75 +33,72 @@ public class LegacyBlackBerryAppsActivity extends CollapsingToolbarBaseActivity 
     }
 
     public static class LegacyBlackBerryAppsFragment extends PreferenceFragmentCompat {
-
-        private static final String KEY_BLACKBERRY_KEYBOARD =
-                "blackberry_keyboard";
-        private static final String KEY_BLACKBERRY_LAUNCHER =
-                "blackberry_launcher";
-        private static final String PACKAGE_BLACKBERRY_KEYBOARD =
-                "com.blackberry.keyboard";
-        private static final String PACKAGE_BLACKBERRY_LAUNCHER =
-                "com.blackberry.blackberrylauncher";
-
         @Override
-        public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+        public void onCreatePreferences(Bundle state, String rootKey) {
             setPreferencesFromResource(R.xml.legacy_blackberry_apps, rootKey);
+            bind(LegacyAppCatalog.KEYBOARD);
+            bind(LegacyAppCatalog.LAUNCHER);
+        }
 
-            final Preference keyboard = findPreference(KEY_BLACKBERRY_KEYBOARD);
-            if (keyboard != null) {
-                keyboard.setOnPreferenceClickListener(preference -> {
-                    openGooglePlay(PACKAGE_BLACKBERRY_KEYBOARD);
-                    return true;
-                });
-            }
-
-            final Preference launcher = findPreference(KEY_BLACKBERRY_LAUNCHER);
-            if (launcher != null) {
-                launcher.setOnPreferenceClickListener(preference -> {
-                    openGooglePlay(PACKAGE_BLACKBERRY_LAUNCHER);
-                    return true;
-                });
-            }
+        private void bind(LegacyAppCatalog.App app) {
+            final Preference pref = findPreference(app.key);
+            if (pref == null) return;
+            pref.setOnPreferenceClickListener(clicked -> {
+                final CharSequence[] choices = {
+                        getString(R.string.legacy_app_google_play_title),
+                        getString(R.string.legacy_app_mirror_title)
+                };
+                new AlertDialog.Builder(requireContext())
+                        .setTitle(app.title)
+                        .setItems(choices, (dialog, which) -> {
+                            if (which == 0) {
+                                openGooglePlay(app.packageName);
+                            } else if (which == 1) {
+                                startActivity(new Intent(requireContext(),
+                                        LegacyApkDownloadActivity.class)
+                                        .putExtra(LegacyApkDownloadActivity.EXTRA_APP, app.key));
+                            }
+                        })
+                        .setNegativeButton(android.R.string.cancel, null)
+                        .show();
+                return true;
+            });
         }
 
         @Override
         public void onResume() {
             super.onResume();
-            updateAppStatus(KEY_BLACKBERRY_KEYBOARD, PACKAGE_BLACKBERRY_KEYBOARD);
-            updateAppStatus(KEY_BLACKBERRY_LAUNCHER, PACKAGE_BLACKBERRY_LAUNCHER);
+            updateStatus(LegacyAppCatalog.KEYBOARD);
+            updateStatus(LegacyAppCatalog.LAUNCHER);
         }
 
-        private void updateAppStatus(String preferenceKey, String packageName) {
-            final Preference preference = findPreference(preferenceKey);
-            if (preference == null) {
-                return;
-            }
-
-            preference.setSummary(isPackageInstalled(packageName)
-                    ? R.string.app_installed
-                    : R.string.app_not_installed);
-        }
-
-        private boolean isPackageInstalled(String packageName) {
+        private void updateStatus(LegacyAppCatalog.App app) {
+            final Preference pref = findPreference(app.key);
+            if (pref == null) return;
+            boolean installed;
             try {
-                requireContext().getPackageManager().getApplicationInfo(packageName, 0);
-                return true;
+                requireContext().getPackageManager().getApplicationInfo(app.packageName, 0);
+                installed = true;
             } catch (PackageManager.NameNotFoundException e) {
-                return false;
+                installed = false;
             }
+            pref.setSummary(installed ? R.string.app_installed : R.string.app_not_installed);
         }
 
         private void openGooglePlay(String packageName) {
-            final Intent playStoreIntent = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("market://details?id=" + packageName));
-            playStoreIntent.setPackage("com.android.vending");
-
             try {
-                startActivity(playStoreIntent);
-            } catch (ActivityNotFoundException e) {
                 startActivity(new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("https://play.google.com/store/apps/details?id="
-                                + packageName)));
+                        Uri.parse("market://details?id=" + packageName))
+                        .setPackage("com.android.vending"));
+            } catch (ActivityNotFoundException e) {
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("https://play.google.com/store/apps/details?id="
+                                    + packageName)));
+                } catch (ActivityNotFoundException unavailable) {
+                    Toast.makeText(requireContext(), R.string.legacy_app_no_link_handler,
+                            Toast.LENGTH_LONG).show();
+                }
             }
         }
     }

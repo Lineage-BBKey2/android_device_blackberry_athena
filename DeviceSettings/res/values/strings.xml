@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="device_settings_app_label">BlackBerry Settings</string>
     <string name="device_settings_title">BlackBerry settings</string>
     <string name="device_settings_summary">Physical keyboard settings, hardware configuration, legacy BlackBerry apps</string>
 
@@ -62,10 +63,13 @@
 
     <string name="apps_category">Apps</string>
     <string name="legacy_blackberry_apps_title">Legacy BlackBerry apps</string>
-    <string name="legacy_blackberry_apps_summary">Install BlackBerry Keyboard and BlackBerry Launcher from Google Play</string>
-    <string name="legacy_blackberry_apps_instructions">Tap an app below to view it on Google Play.</string>
+    <string name="legacy_blackberry_apps_summary">Install original BlackBerry KEY2 apps from Google Play or Archive.org</string>
+    <string name="legacy_blackberry_apps_instructions">Tap an app to install from Google Play or Archive.org.</string>
     <string name="blackberry_keyboard_title">BlackBerry Keyboard</string>
     <string name="blackberry_launcher_title">BlackBerry Launcher</string>
     <string name="app_installed">Installed</string>
     <string name="app_not_installed">Not installed</string>
+    <string name="legacy_app_google_play_title">View on Google Play</string>
+    <string name="legacy_app_mirror_title">Install APK from Archive.org</string>
+    <string name="legacy_app_no_link_handler">Unable to open Google Play. Install or enable the Google Play Store, or use the APK download option instead.</string>
 </resources>
