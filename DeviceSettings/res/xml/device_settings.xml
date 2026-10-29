@@ -44,6 +44,13 @@
             android:summary="@string/keyboard_adaptive_brightness_summary"
             android:defaultValue="true" />
 
+        <SwitchPreference
+            android:key="keyboard_backlight_high_brightness_off"
+            android:title="@string/keyboard_high_brightness_off_title"
+            android:summary="@string/keyboard_high_brightness_off_summary"
+            android:persistent="false"
+            android:defaultValue="true" />
+
         <SeekBarPreference
             android:key="keyboard_brightness"
             android:title="@string/keyboard_brightness_title"

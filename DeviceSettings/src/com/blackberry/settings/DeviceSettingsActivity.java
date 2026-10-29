@@ -48,6 +48,8 @@ public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
                 "ime_switcher_shortcut";
         private static final String KEY_ADPT_KEYBOARD_BRIGHTNESS =
                 "keyboard_adaptive_brightness";
+        private static final String KEY_KEYBOARD_HIGH_BRIGHTNESS_OFF =
+                "keyboard_backlight_high_brightness_off";
         private static final String KEY_KEYBOARD_BRIGHTNESS =
                 "keyboard_brightness";
         private static final String KEY_KEYBOARD_TIMEOUT =
@@ -127,6 +129,20 @@ public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
                         "keyboard_adaptive_brightness", 1);
                 kbdAdptBright.setChecked(current == 1);
                 kbdAdptBright.setOnPreferenceChangeListener(this);
+            }
+
+            // Independent high-screen-brightness cutoff
+            SwitchPreference kbdHighBrightnessOff =
+                    findPreference(KEY_KEYBOARD_HIGH_BRIGHTNESS_OFF);
+            if (kbdHighBrightnessOff != null) {
+                int legacyAdaptive = Settings.Secure.getInt(
+                        getContext().getContentResolver(),
+                        KEY_ADPT_KEYBOARD_BRIGHTNESS, 1);
+                int current = Settings.Secure.getInt(
+                        getContext().getContentResolver(),
+                        KEY_KEYBOARD_HIGH_BRIGHTNESS_OFF, legacyAdaptive);
+                kbdHighBrightnessOff.setChecked(current == 1);
+                kbdHighBrightnessOff.setOnPreferenceChangeListener(this);
             }
 
             // Keyboard brightness (0.0 - 1.0 stored, 0-100 displayed)
@@ -314,6 +330,12 @@ public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
                             "keyboard_adaptive_brightness",
                             checked ? 1 : 0);
                     return true;
+                }
+                case KEY_KEYBOARD_HIGH_BRIGHTNESS_OFF: {
+                    return Settings.Secure.putInt(
+                            getContext().getContentResolver(),
+                            KEY_KEYBOARD_HIGH_BRIGHTNESS_OFF,
+                            (boolean) newValue ? 1 : 0);
                 }
                 case KEY_KEYBOARD_BRIGHTNESS: {
                     int percent = (int) newValue;

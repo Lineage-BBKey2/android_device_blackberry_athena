@@ -24,7 +24,9 @@
 
     <string name="keyboard_backlight_category">Keyboard backlight</string>
     <string name="keyboard_adaptive_brightness_title">Keyboard adaptive brightness</string>
-    <string name="keyboard_adaptive_brightness_summary">Keyboard backlight scales with screen brightness and turns off with bright screen</string>
+    <string name="keyboard_adaptive_brightness_summary">Keyboard backlight scales with screen brightness</string>
+    <string name="keyboard_high_brightness_off_title">Turn off with bright screen</string>
+    <string name="keyboard_high_brightness_off_summary">Turn off keyboard backlight at high screen brightness for power saving in daylight</string>
     <string name="keyboard_brightness_title">Keyboard brightness</string>
     <string name="keyboard_brightness_summary">Brightness level for keyboard backlight</string>
     <string name="keyboard_backlight_timeout_title">Keyboard backlight timeout</string>
