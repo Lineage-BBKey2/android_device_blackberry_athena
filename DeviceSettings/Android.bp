@@ -9,5 +9,6 @@ android_app {
     static_libs: [
         "androidx.preference_preference",
         "com.google.android.material_material",
+        "androidx.core_core",
     ],
 }
