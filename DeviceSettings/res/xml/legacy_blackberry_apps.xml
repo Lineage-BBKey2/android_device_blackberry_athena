@@ -9,6 +9,12 @@
         android:persistent="false"
         app:iconSpaceReserved="false" />
     <Preference
+        android:key="legacy_blackberry_apps_google_play_note"
+        android:summary="@string/legacy_blackberry_apps_google_play_note"
+        android:selectable="false"
+        android:persistent="false"
+        app:iconSpaceReserved="false" />
+    <Preference
         android:key="blackberry_keyboard"
         android:title="@string/blackberry_keyboard_title"
         android:persistent="false"

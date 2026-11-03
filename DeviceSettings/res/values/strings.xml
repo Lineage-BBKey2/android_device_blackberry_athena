@@ -65,6 +65,7 @@
     <string name="legacy_blackberry_apps_title">Legacy BlackBerry apps</string>
     <string name="legacy_blackberry_apps_summary">Install original BlackBerry KEY2 apps from Google Play or Archive.org</string>
     <string name="legacy_blackberry_apps_instructions">Tap an app to install from Google Play or Archive.org.</string>
+    <string name="legacy_blackberry_apps_google_play_note">Google Play app availability requires a Google account that accessed the app before it was unpublished.</string>
     <string name="blackberry_keyboard_title">BlackBerry Keyboard</string>
     <string name="blackberry_launcher_title">BlackBerry Launcher</string>
     <string name="app_installed">Installed</string>
