@@ -103,7 +103,10 @@ blob_fixups: blob_fixups_user_type =        {
         .binary_regex_replace(b'\x88\xbb\x0f\x99\x41\xf6\x1c\x50\x08\x58\x60\xbb',
                               b'\x31\xe0\x0f\x99\x41\xf6\x1c\x50\x08\x58\x60\xbb'),
 
-    ('vendor/lib/libdualcameraddm.so',
+    # The HDR algorithm is dlopened by the vendor camera process.
+    # Use the vendor C++ compatibility library, as for the other legacy algorithms.
+    ('vendor/lib/libmmcamera_hdr_gb_lib.so',
+     'vendor/lib/libdualcameraddm.so',
      'vendor/lib/libarcsoft_dualcam_refocus.so',
      'vendor/lib/libarcsoft_low_light_shot.so',
      'vendor/lib/libarcsoft_nighthawk.so',
