@@ -41,10 +41,13 @@
         <item>21</item>
     </integer-array>
 
-    <!-- Use fourteen ring volume steps -->
-    <integer name="config_audio_ring_vol_steps">14</integer>
+    <!-- Eight ring positions including silent and maximum (0..7). -->
+    <integer name="config_audio_ring_vol_steps">7</integer>
     
-    <!-- Use fourteen notification volume steps -->
-    <integer name="config_audio_notif_vol_steps">14</integer>
+    <!-- Eight notification positions including silent and maximum (0..7). -->
+    <integer name="config_audio_notif_vol_steps">7</integer>
+
+    <!-- Allow alarm zero as the eighth position; alarm_min_volume_zero is enabled. -->
+    <integer name="config_audio_alarm_min_vol">0</integer>
 
 </resources>
