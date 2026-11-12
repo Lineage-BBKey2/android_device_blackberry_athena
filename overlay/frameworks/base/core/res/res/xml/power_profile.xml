@@ -65,6 +65,39 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE
         <value>5</value>
         <value>1.090</value>
     </array>
+    <!-- Missing model coefficients, using Qualcomm reference estimates carried
+         by tim-ecoder from X01BD/lavender. These are NOT measurements for
+         Athena; replace with device-specific calibration when available.
+         Currents are mA; controller operating voltages are mV.
+         Retain the legacy radio/Wi-Fi entries for fallback accounting. -->
+    <item name="modem.controller.sleep">0</item>
+    <item name="modem.controller.idle">6.92</item>
+    <item name="modem.controller.rx">150</item>
+    <array name="modem.controller.tx">
+        <value>180</value>
+        <value>200</value>
+        <value>220</value>
+        <value>240</value>
+        <value>260</value>
+    </array>
+    <item name="modem.controller.voltage">3700</item>
+
+    <item name="bluetooth.controller.idle">1.2</item>
+    <item name="bluetooth.controller.rx">5.5</item>
+    <item name="bluetooth.controller.tx">6.2</item>
+    <item name="bluetooth.controller.voltage">3300</item>
+
+    <item name="wifi.controller.idle">2.5</item>
+    <item name="wifi.controller.rx">98</item>
+    <item name="wifi.controller.tx">150</item>
+    <array name="wifi.controller.tx_levels">
+        <value>150</value>
+    </array>
+    <item name="wifi.controller.voltage">3700</item>
+
+    <item name="audio">14.86</item>
+    <item name="video">58.17</item>
+
     <!-- Number of cores each CPU cluster contains -->
     <array name="cpu.clusters.cores">
         <value>4</value> <!-- Cluster 0 has 4 cores (cpu0, cpu1, cpu2, cpu3) -->
