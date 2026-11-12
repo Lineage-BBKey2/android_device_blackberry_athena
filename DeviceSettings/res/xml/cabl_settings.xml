@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+        android:key="cabl_mode"
+        android:title="@string/cabl_strength"
+        android:entries="@array/cabl_mode_entries"
+        android:entryValues="@array/cabl_mode_values"
+        android:persistent="false" />
+    <Preference
+        android:key="cabl_status"
+        android:title="@string/cabl_status_title"
+        android:selectable="false" />
+    <Preference
+        android:key="cabl_retry"
+        android:title="@string/cabl_retry" />
+    <com.android.settingslib.widget.FooterPreference
+        android:key="cabl_footer"
+        android:title="@string/cabl_footer"
+        android:selectable="false" />
+</PreferenceScreen>

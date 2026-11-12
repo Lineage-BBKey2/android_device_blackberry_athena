@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cabl_title">Adaptive backlight (CABL)</string>
+    <string name="cabl_summary">Adjust the backlight for the displayed content</string>
+    <string name="cabl_strength">Strength</string>
+    <string name="cabl_off">Off</string>
+    <string name="cabl_strong">Strong — 50% backlight scaling floor</string>
+    <string name="cabl_balanced">Balanced — 65% backlight scaling floor</string>
+    <string name="cabl_mild">Mild — 75% backlight scaling floor</string>
+    <string name="cabl_footer">Reduce display power use by dimming the backlight and compensating the picture. Stronger adjustment can change how dark content looks. This works alongside adaptive brightness.</string>
+    <!-- Short translated names for confirmation status, independent of list labels. -->
+    <string name="cabl_strong_short">Strong</string>
+    <string name="cabl_balanced_short">Balanced</string>
+    <string name="cabl_mild_short">Mild</string>
+    <string name="cabl_status_title">Status</string>
+    <string name="cabl_last_confirmed">Last confirmed: %1$s</string>
+    <string name="cabl_applying">Applying saved selection…</string>
+    <string name="cabl_not_confirmed">The saved selection has not been confirmed. You can try applying it again.</string>
+    <string name="cabl_retry">Apply selection again</string>
+    <string name="cabl_save_failed">Could not save the backlight setting</string>
+    <string name="cabl_unknown_selection">Choose a valid strength</string>
+    <string name="cabl_primary_user_only">Only the device owner can change this setting</string>
+    <string-array name="cabl_mode_entries">
+        <item>@string/cabl_off</item>
+        <item>@string/cabl_strong</item>
+        <item>@string/cabl_balanced</item>
+        <item>@string/cabl_mild</item>
+    </string-array>
+    <string-array name="cabl_mode_values" translatable="false">
+        <item>off</item>
+        <item>Low</item>
+        <item>Medium</item>
+        <item>High</item>
+    </string-array>
+</resources>

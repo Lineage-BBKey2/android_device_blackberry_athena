@@ -69,5 +69,26 @@
                 android:resource="@xml/legacy_apk_paths" />
         </provider>
 
+        <!-- A Display entry hosted by this existing app; no Settings fork needed. -->
+        <activity
+            android:name=".CablSettingsActivity"
+            android:label="@string/cabl_title"
+            android:exported="true"
+            android:permission="android.permission.WRITE_SECURE_SETTINGS">
+            <intent-filter>
+                <action android:name="com.android.settings.action.IA_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data
+                android:name="com.android.settings.category"
+                android:value="com.android.settings.category.ia.display" />
+            <meta-data
+                android:name="com.android.settings.summary"
+                android:resource="@string/cabl_summary" />
+            <meta-data
+                android:name="com.android.settings.profile"
+                android:value="primary_profile_only" />
+        </activity>
+
     </application>
 </manifest>
