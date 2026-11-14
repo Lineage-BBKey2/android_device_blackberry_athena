@@ -17,4 +17,8 @@
         android:key="cabl_footer"
         android:title="@string/cabl_footer"
         android:selectable="false" />
+    <com.android.settingslib.widget.FooterPreference
+        android:key="cabl_power_footer"
+        android:title="@string/cabl_power_footer"
+        android:selectable="false" />
 </PreferenceScreen>

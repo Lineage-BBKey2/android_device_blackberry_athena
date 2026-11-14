@@ -32,4 +32,5 @@
         <item>Medium</item>
         <item>High</item>
     </string-array>
+    <string name="cabl_power_footer">Power savings from reduced display power may be offset by increased processor usage.</string>
 </resources>

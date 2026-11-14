@@ -50,6 +50,10 @@ public class CablSettingsActivity extends CollapsingToolbarBaseActivity {
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.cabl_settings, rootKey);
+            findPreference("cabl_footer").setOrder(1000);
+            findPreference("cabl_power_footer").setOrder(1001);
+            ((com.android.settingslib.widget.FooterPreference)
+                    findPreference("cabl_power_footer")).setIconVisibility(android.view.View.GONE);
             mMode = findPreference("cabl_mode");
             mMode.setSummaryProvider(ListPreference.SimpleSummaryProvider.getInstance());
             mStatus = findPreference("cabl_status");
@@ -66,7 +70,7 @@ public class CablSettingsActivity extends CollapsingToolbarBaseActivity {
                 return false;
             });
             mRetry.setOnPreferenceClickListener(preference -> {
-                writeMode(SystemProperties.get(MODE, "High"));
+                writeMode(SystemProperties.get(MODE, "off"));
                 return true;
             });
             refresh();
@@ -111,7 +115,7 @@ public class CablSettingsActivity extends CollapsingToolbarBaseActivity {
         }
 
         private void refresh() {
-            String desired = SystemProperties.get(MODE, "High");
+            String desired = SystemProperties.get(MODE, "off");
             int index = mMode.findIndexOfValue(desired);
             if (index >= 0) {
                 mMode.setValue(desired);
