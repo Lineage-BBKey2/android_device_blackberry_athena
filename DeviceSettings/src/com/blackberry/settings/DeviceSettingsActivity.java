@@ -275,6 +275,12 @@ public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
         }
 
         @Override
+        public void onResume() {
+            super.onResume();
+            KeyboardHardwareLayout.bind(this);
+        }
+
+        @Override
         public boolean onPreferenceChange(Preference preference, Object newValue) {
             String key = preference.getKey();
 

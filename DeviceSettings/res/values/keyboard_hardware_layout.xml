@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="keyboard_hardware_layout_title">Physical keyboard layout</string>
+    <string name="keyboard_hardware_layout_auto">Automatic (factory setting)</string>
+    <string name="keyboard_hardware_layout_current">Current: %1$s. Applies to every input language.</string>
+    <string name="keyboard_hardware_layout_pending">%1$s selected. Restart required. Current: %2$s.</string>
+    <string name="keyboard_hardware_layout_restart">%1$s selected. Restart required to apply the keyboard layout.</string>
+    <string name="keyboard_hardware_layout_apply_failed">%1$s selected. Could not apply the keyboard layout at startup. Select a layout and restart to try again.</string>
+    <string name="keyboard_hardware_layout_save_failed">Could not save the keyboard layout.</string>
+    <string-array name="keyboard_hardware_layout_entries">
+        <item>@string/keyboard_hardware_layout_auto</item>
+        <item>QWERTY</item>
+        <item>AZERTY</item>
+        <item>QWERTZ</item>
+    </string-array>
+    <string-array name="keyboard_hardware_layout_values">
+        <item>auto</item>
+        <item>qwerty</item>
+        <item>azerty</item>
+        <item>qwertz</item>
+    </string-array>
+</resources>
