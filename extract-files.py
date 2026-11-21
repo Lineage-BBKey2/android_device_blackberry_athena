@@ -83,8 +83,13 @@ blob_fixups: blob_fixups_user_type =        {
         .add_needed('libbinder_shim.so')
         .add_needed('libfakelogprint.so'),
 
+    # HAL1 close must finish queued initialization before stopping its worker.
+    # Keep the synchronous STOP command, but enqueue it after existing work.
     'vendor/lib/hw/camera.sdm660.so': blob_fixup()
-        .replace_needed('libskia.so', 'libskia_shim.so'),
+        .replace_needed('libskia.so', 'libskia_shim.so')
+        .binary_regex_replace(
+            b'\x04\xf5\x40\x69\x02\x21\x01\x22[\x00\x01]\x23\x48\x46\x68\xf0\xad\xfd\x48\x46\x68\xf0\x8a\xfd',
+            b'\x04\xf5\x40\x69\x02\x21\x01\x22\x00\x23\x48\x46\x68\xf0\xad\xfd\x48\x46\x68\xf0\x8a\xfd'),
 
     # Cams - libmmcamera_interface: skip Main+AUX virtual camera (ID 3) creation
     # sort_camera_info() BEQ.W → B.W at 0x678e: unconditionally skip dual-camera muxer loops
