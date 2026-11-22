@@ -30,4 +30,4 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 
 # OTA Updater
 PRODUCT_PROPERTY_OVERRIDES += \
-    lineage.updater.uri=https://raw.githubusercontent.com/Lineage-BBKey2/distribution/main/{device}.json
+    lineage.updater.uri=https://raw.githubusercontent.com/Lineage-BBKey2/distribution/main/{device}-4p19.json
