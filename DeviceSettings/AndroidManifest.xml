@@ -47,11 +47,33 @@
                 android:value="primary_profile_only" />
         </activity>
 
+        <!--
+            Settings/Apps entry hosted by this existing app; no Settings package change except
+            for addition of BlackBerry category in packages/apps/Settings/res/xml/apps.xml and
+            category's string value in packages/apps/Settings/res/values/strings.xml.
+        -->
         <activity
             android:name=".LegacyBlackBerryAppsActivity"
             android:label="@string/legacy_blackberry_apps_title"
-            android:parentActivityName=".DeviceSettingsActivity"
-            android:exported="false" />
+            android:exported="true"
+            android:permission="android.permission.WRITE_SECURE_SETTINGS">
+            <intent-filter>
+                <action android:name="com.android.settings.action.IA_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data
+                android:name="com.android.settings.category"
+                android:value="com.android.settings.category.ia.apps" />
+            <meta-data
+                android:name="com.android.settings.group_key"
+                android:value="blackberry_category" />
+            <meta-data
+                android:name="com.android.settings.summary"
+                android:resource="@string/legacy_blackberry_apps_summary" />
+            <meta-data
+                android:name="com.android.settings.profile"
+                android:value="primary_profile_only" />
+        </activity>
 
         <activity
             android:name=".LegacyApkDownloadActivity"
@@ -69,7 +91,7 @@
                 android:resource="@xml/legacy_apk_paths" />
         </provider>
 
-        <!-- A Display entry hosted by this existing app; no Settings fork needed. -->
+        <!-- Settings/Display entry hosted by this existing app; no Settings package change needed. -->
         <activity
             android:name=".CablSettingsActivity"
             android:label="@string/cabl_title"
